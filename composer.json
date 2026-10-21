@@ -1,0 +1,17 @@
+{
+  "name": "ivanmedia/onepage-portfolio",
+  "description": "One-page portfolio para Ivan Media con PHP, Sass y JavaScript vanilla.",
+  "type": "project",
+  "require": {
+    "php": "^8.1"
+  },
+  "require-dev": {
+    "scssphp/scssphp": "^1.13"
+  },
+  "scripts": {
+    "sass:build": "scss --style=compressed assets/scss/style.scss assets/css/style.css"
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
