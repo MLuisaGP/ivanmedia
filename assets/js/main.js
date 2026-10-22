@@ -86,6 +86,35 @@
     if (event.target === modal) closeModal();
   });
   modal?.addEventListener('close', () => document.body.classList.remove('modal-open'));
+
+  const reelVideo = document.querySelector('#reelVideo');
+  const reelPlayBtn = document.querySelector('#reelPlayBtn');
+  const reelCard = document.querySelector('#reelFrontCard');
+  if (reelVideo) {
+    const toggleReel = e => {
+      e?.preventDefault();
+      if (reelVideo.paused) {
+        reelVideo.play().catch(() => {});
+        if (reelPlayBtn) reelPlayBtn.style.opacity = '0';
+      } else {
+        reelVideo.pause();
+        if (reelPlayBtn) reelPlayBtn.style.opacity = '1';
+      }
+    };
+    reelPlayBtn?.addEventListener('click', toggleReel);
+    reelCard?.addEventListener('click', e => {
+      if (e.target !== reelPlayBtn && !reelPlayBtn?.contains(e.target)) {
+        toggleReel(e);
+      }
+    });
+    reelVideo.addEventListener('play', () => {
+      if (reelPlayBtn) reelPlayBtn.style.opacity = '0';
+    });
+    reelVideo.addEventListener('pause', () => {
+      if (reelPlayBtn) reelPlayBtn.style.opacity = '1';
+    });
+  }
+
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
       closeModal();
