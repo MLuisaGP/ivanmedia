@@ -3,10 +3,12 @@ declare(strict_types=1);
 
 /**
  * @var \App\Models\SiteConfig $site
+ * @var \App\Models\Niche|null $niche
  */
+$isNiche = isset($niche) && $niche !== null;
 ?>
-<header class="site-header" id="top">
-  <a class="brand" href="#top" aria-label="<?= e($site->name) ?>, inicio">
+<header class="site-header <?= $isNiche ? 'site-header--solid' : '' ?>" id="top">
+  <a class="brand" href="/" aria-label="<?= e($site->name) ?>, inicio">
     <span class="brand-mark">i<span>m</span></span>
     <span><?= e($site->name) ?><small>Visual Studio</small></span>
   </a>
@@ -15,10 +17,19 @@ declare(strict_types=1);
   </button>
   <nav class="main-nav" id="mainNav">
     <div class="nav-links">
-      <a href="#about"><span class="nav-num">01</span>Quién soy</a>
-      <a href="#work"><span class="nav-num">02</span>Portafolio</a>
-      <a href="#services"><span class="nav-num">03</span>Servicios</a>
-      <a href="#contact"><span class="nav-num">04</span>Contacto</a>
+      <?php if ($isNiche): ?>
+        <a href="/"><span class="nav-num">01</span>Inicio</a>
+        <a href="/#about"><span class="nav-num">02</span>Quién soy</a>
+        <a href="/#work"><span class="nav-num">03</span>Sectores</a>
+        <a href="#galeria"><span class="nav-num">04</span>Galería</a>
+        <a href="#servicios"><span class="nav-num">05</span>Servicios</a>
+        <a href="/#contact"><span class="nav-num">06</span>Contacto</a>
+      <?php else: ?>
+        <a href="#about"><span class="nav-num">01</span>Quién soy</a>
+        <a href="#work"><span class="nav-num">02</span>Sectores</a>
+        <a href="#services"><span class="nav-num">03</span>Servicios</a>
+        <a href="#contact"><span class="nav-num">04</span>Contacto</a>
+      <?php endif; ?>
     </div>
     <div class="nav-footer">
       <a class="nav-cta" href="<?= e($site->whatsapp) ?>" target="_blank" rel="noopener">

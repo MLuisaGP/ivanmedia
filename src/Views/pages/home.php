@@ -5,6 +5,7 @@ use App\Core\View;
 
 /**
  * @var \App\Models\SiteConfig $site
+ * @var array<string, \App\Models\Niche> $niches
  * @var array<\App\Models\Project> $projects
  * @var array<string, mixed>|null $flash
  */
@@ -18,7 +19,7 @@ use App\Core\View;
 
 <?= View::partial('partials/intro') ?>
 
-<?= View::partial('partials/work', ['projects' => $projects]) ?>
+<?= View::partial('partials/work', ['niches' => $niches, 'projects' => $projects]) ?>
 
 <?= View::partial('partials/services') ?>
 

@@ -8,3 +8,4 @@
 /vendor/
 /storage/messages/*.jsonl
 .DS_Store
+/assets/multimedia/
