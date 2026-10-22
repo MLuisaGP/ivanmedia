@@ -1,0 +1,18 @@
+# Ivan Media — Apache URL Rewriter & Security
+Options -Indexes
+Options +FollowSymLinks
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Prevent direct access to sensitive directories and config files
+    RewriteRule ^(src|storage|vendor|composer\.(json|lock)) - [F,L]
+
+    # Deliver existing files and directories directly
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Route all other requests through the front controller
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>

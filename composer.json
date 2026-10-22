@@ -3,10 +3,20 @@
   "description": "One-page portfolio para Ivan Media con PHP, Sass y JavaScript vanilla.",
   "type": "project",
   "require": {
-    "php": "^8.1"
+    "php": "^8.1",
+    "bramus/router": "^1.6",
+    "vlucas/valitron": "^1.4"
   },
   "require-dev": {
     "scssphp/scssphp": "^1.13"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
   },
   "scripts": {
     "sass:build": "scss --style=compressed assets/scss/style.scss assets/css/style.css"

@@ -3,4 +3,8 @@
 /assets/fotos/
 /assets/imagenes/
 /assets/videos/
-/MATERIAL PAGINA WEB
+/MATERIAL PAGINA WEB/
+/assets/images/MATERIAL*
+/vendor/
+/storage/messages/*.jsonl
+.DS_Store
