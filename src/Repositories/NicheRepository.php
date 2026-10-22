@@ -53,7 +53,7 @@ class NicheRepository
                 badge: 'Gastronomía',
                 tagline: 'Fotografía y video gastronómico que despiertan el apetito y llenan mesas.',
                 description: 'Creamos contenido comercial especializado para restaurantes, taquerías gourmet, parrillas y conceptos gastronómicos en Hermosillo. Resaltamos la textura crujiente de las costras, el humo de las brasas, cortes selectos y coctelería de autor mediante tomas macro de alta definición y reels verticales de ritmo dinámico diseñados para despertar el antojo y generar reservaciones.',
-                coverImage: '/assets/multimedia/restaurante/imagenes/10-DSC05274.webp',
+                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/v1792711027/DSC01964.jpg',
                 services: [
                     'Fotografía macro de platillos insignia y estilismo culinario en mesa',
                     'Reels verticales de preparación, fuego en asador y vertido de salsas',
@@ -64,14 +64,14 @@ class NicheRepository
                 gallery: [
                     [
                         'type' => 'image',
-                        'src' => '/assets/multimedia/restaurante/imagenes/49-DSC01238.webp',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/v1792711029/98-DSC00889.jpg',
                         'title' => 'Guarnición y salsas artesanales',
                         'caption' => 'Colores vivos y texturas frescas en encuadre vertical',
-                        'aspect' => 'horizontal'
+                        'aspect' => 'tall'
                     ],
                     [
                         'type' => 'image',
-                        'src' => '/assets/multimedia/restaurante/imagenes/1-DSC01561.webp',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/v1792711026/28-DSC01380.jpg',
                         'title' => 'Taco artesanal con tortillas hechas a mano',
                         'caption' => 'Primer plano vertical destacando textura crujiente y frescura',
                         'aspect' => 'tall'
@@ -86,17 +86,24 @@ class NicheRepository
                     ],
                     [
                         'type' => 'image',
-                        'src' => '/assets/multimedia/restaurante/imagenes/2-DSC02848.webp',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/v1792710980/2-DSC02848.jpg',
                         'title' => 'Mixología y coctelería de autor',
                         'caption' => 'Cristalería fina y presentación líquida vertical con luz dirigida',
                         'aspect' => 'tall'
                     ],
                     [
                         'type' => 'image',
-                        'src' => '/assets/multimedia/restaurante/imagenes/25-DSC03197.webp',
-                        'title' => 'Corte y preparación a las brasas',
-                        'caption' => 'Composición horizontal con foco central en la textura',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/v1792711027/DSC01964.jpg',
+                        'title' => 'Experiencia culinaria y ambiente',
+                        'caption' => 'Perspectiva gastronómica y arquitectura de salón',
                         'aspect' => 'horizontal'
+                    ],
+                    [
+                        'type' => 'image',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/v1792711023/25-DSC03197.jpg',
+                        'title' => 'Corte y preparación a las brasas',
+                        'caption' => 'Composición vertical con foco central en la textura',
+                        'aspect' => 'tall'
                     ],
                     [
                         'type' => 'video',
@@ -108,9 +115,30 @@ class NicheRepository
                     ],
                     [
                         'type' => 'image',
-                        'src' => '/assets/multimedia/restaurante/imagenes/9-DSC03163.webp',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/v1792711023/17-DSC02980.jpg',
                         'title' => 'Especialidad caliente en comal',
                         'caption' => 'Fotografía vertical con vapor y sazón en punto de servicio',
+                        'aspect' => 'tall'
+                    ],
+                    [
+                        'type' => 'image',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/v1792711026/84-DSC00951.jpg',
+                        'title' => 'Costra dorada y queso fundido',
+                        'caption' => 'Composición vertical con foco al centro en el dorado crujiente',
+                        'aspect' => 'tall'
+                    ],
+                    [
+                        'type' => 'image',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/v1792711024/DSC01812.jpg',
+                        'title' => 'Platillo insignia al detalle',
+                        'caption' => 'Composición horizontal con foco en la textura y el producto',
+                        'aspect' => 'horizontal'
+                    ],
+                    [
+                        'type' => 'image',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/v1792711024/26-DSC03135.jpg',
+                        'title' => 'Carne asada y corte sonorense',
+                        'caption' => 'Toma vertical con humo de brasa y sellado a la leña',
                         'aspect' => 'tall'
                     ],
                     [
@@ -123,57 +151,29 @@ class NicheRepository
                     ],
                     [
                         'type' => 'image',
-                        'src' => '/assets/multimedia/restaurante/imagenes/84-DSC00951.webp',
-                        'title' => 'Costra dorada y queso fundido',
-                        'caption' => 'Composición horizontal con foco al centro en el dorado crujiente',
-                        'aspect' => 'horizontal'
-                    ],
-                    [
-                        'type' => 'image',
-                        'src' => '/assets/multimedia/restaurante/imagenes/26-DSC03135.webp',
-                        'title' => 'Carne asada y corte sonorense',
-                        'caption' => 'Toma vertical con humo de brasa y sellado a la leña',
-                        'aspect' => 'tall'
-                    ],
-                    [
-                        'type' => 'image',
-                        'src' => '/assets/multimedia/restaurante/imagenes/36-DSC01339.webp',
-                        'title' => 'Platillo insignia al detalle',
-                        'caption' => 'Composición vertical de alto contraste para menú y redes',
-                        'aspect' => 'tall'
-                    ],
-                    [
-                        'type' => 'image',
-                        'src' => '/assets/multimedia/restaurante/imagenes/32-DSC01355.webp',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/v1792711020/63-DSC01121.jpg',
                         'title' => 'Gourmet sonorense al carbón',
-                        'caption' => 'Perspectiva horizontal con foco en el producto insignia',
-                        'aspect' => 'horizontal'
-                    ],
-                    [
-                        'type' => 'image',
-                        'src' => '/assets/multimedia/restaurante/imagenes/5-DSC05389.webp',
-                        'title' => 'Detalle de cocina y corte maestro',
                         'caption' => 'Encuadre vertical capturando la jugosidad y el término exacto',
                         'aspect' => 'tall'
                     ],
                     [
                         'type' => 'image',
-                        'src' => '/assets/multimedia/restaurante/imagenes/57-DSC01162.webp',
-                        'title' => 'Experiencia gastronómica norteña',
-                        'caption' => 'Fotografía de producto en mesa con iluminación cálida',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/v1792711021/82-DSC01002.jpg',
+                        'title' => 'Montaje final y presentación gourmet',
+                        'caption' => 'Enfoque selectivo vertical en los ingredientes de la casa',
                         'aspect' => 'tall'
                     ],
                     [
                         'type' => 'image',
-                        'src' => '/assets/multimedia/restaurante/imagenes/82-DSC01002.webp',
-                        'title' => 'Montaje final y presentación gourmet',
-                        'caption' => 'Enfoque selectivo vertical en los ingredientes de la casa',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/v1792710979/2-DSC03206.jpg',
+                        'title' => 'Experiencia gastronómica norteña',
+                        'caption' => 'Fotografía de producto en mesa con iluminación cálida',
                         'aspect' => 'tall'
                     ]
                 ],
                 video: '/assets/multimedia/restaurante/videos/horizontal/DOCUMENTAL%20LA%20SALSA.mov',
                 order: 1,
-                heroImage: '/assets/multimedia/restaurante/imagenes/DSC01964.JPG'
+                heroImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/v1792711027/DSC01964.jpg'
             ),
 
             'cafeteria' => new Niche(
