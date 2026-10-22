@@ -15,7 +15,7 @@ Plantilla de portafolio visual e interactiva construida con **PHP, HTML semánti
 - Composer para gestionar PHP y el compilador Sass.
 
 ## Cómo ejecutar localmente
-Requiere PHP 8.1 o superior.
+Requiere PHP 8.1 o superior. ass
 
 ```bash
 php -S localhost:8000
