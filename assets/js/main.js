@@ -42,6 +42,64 @@
     revealItems.forEach(item => item.classList.add('is-visible'));
   }
 
+  // Counter animation for statistics (Quién soy)
+  const statCounters = document.querySelectorAll('.stat-counter');
+  if (statCounters.length > 0) {
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const animateCounter = (el) => {
+      const target = parseInt(el.dataset.target, 10);
+      if (isNaN(target)) return;
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      const duration = 1600;
+      let startTime = null;
+
+      const updateCount = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Easing: easeOutCubic (starts briskly, smoothly decelerates to final number)
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(easeProgress * target);
+
+        el.textContent = `${prefix}${current}${suffix}`;
+
+        if (progress < 1) {
+          window.requestAnimationFrame(updateCount);
+        } else {
+          el.textContent = `${prefix}${target}${suffix}`;
+        }
+      };
+
+      window.requestAnimationFrame(updateCount);
+    };
+
+    if (!prefersReducedMotion) {
+      if ('IntersectionObserver' in window) {
+        // Reset to 0 before scrolling into view so the counter starts from 0
+        statCounters.forEach(counter => {
+          const prefix = counter.dataset.prefix || '';
+          const suffix = counter.dataset.suffix || '';
+          counter.textContent = `${prefix}0${suffix}`;
+        });
+
+        const statsObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+
+        statCounters.forEach(counter => statsObserver.observe(counter));
+      } else {
+        statCounters.forEach(counter => animateCounter(counter));
+      }
+    }
+  }
+
   const filters = document.querySelectorAll('.filter-btn');
   const filterCards = document.querySelectorAll('.project-card[data-category]');
   if (filters.length > 0) {

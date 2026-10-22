@@ -18,16 +18,20 @@ declare(strict_types=1);
       </div>
       <div class="about-me-stats">
         <div>
-          <strong>24</strong>
-          <span>Años de edad</span>
+          <strong class="stat-counter" data-target="30" data-prefix="+">+30</strong>
+          <span>Videos producidos</span>
         </div>
         <div>
-          <strong>03</strong>
-          <span>Años de experiencia</span>
+          <strong class="stat-counter" data-target="50" data-prefix="+">+50</strong>
+          <span>Marcas y negocios</span>
         </div>
         <div>
-          <strong>Hermosillo</strong>
-          <span>Sonora, México</span>
+          <strong class="stat-counter" data-target="6" data-prefix="+">+6</strong>
+          <span>Nichos creativos</span>
+        </div>
+        <div>
+          <strong class="stat-counter" data-target="360" data-suffix="°">360°</strong>
+          <span>Visión creativa</span>
         </div>
       </div>
     </div>

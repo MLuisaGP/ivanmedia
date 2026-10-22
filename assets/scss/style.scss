@@ -217,7 +217,7 @@ img { display: block; width: 100%; }
 }
 .about-me-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding-top: 26px;
   border-top: 1px solid #e6eaf0;
@@ -228,14 +228,18 @@ img { display: block; width: 100%; }
     gap: 6px;
   }
   strong {
-    font: 700 clamp(24px, 3vw, 36px) $font-display;
+    font: 700 clamp(22px, 2.5vw, 36px) $font-display;
     color: $navy;
     letter-spacing: -.05em;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
   }
   span {
     font-size: 9px;
     letter-spacing: .12em;
     color: #687789;
+    text-transform: uppercase;
+    line-height: 1.35;
   }
 }
 .about-me-visual {
@@ -1546,6 +1550,10 @@ body.page-niche .site-header {
   .hero-art { margin-left: 0; min-height: 350px; }
   .about-me, .intro, .work-section, .services, .results, .package-section, .testimonials { padding-right: 7%; padding-left: 7%; }
   .about-me-layout { gap: 5%; }
+  .about-me-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 16px;
+  }
   .project-grid { grid-template-columns: repeat(2, 1fr); }
   .results { gap: 5%; }
   .results-visual { min-height: 390px; }
@@ -1777,11 +1785,12 @@ body.page-niche .site-header {
     font-size: 11px;
   }
   .about-me-stats {
-    gap: 12px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 14px;
     padding-top: 20px;
     max-width: 100%;
-    strong { font-size: 24px; }
-    span { font-size: 8px; }
+    strong { font-size: clamp(22px, 6.5vw, 28px); }
+    span { font-size: 8.5px; line-height: 1.35; }
   }
   .bio-frame {
     max-width: 340px;
