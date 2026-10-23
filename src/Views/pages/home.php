@@ -27,4 +27,6 @@ use App\Core\View;
 
 <?= View::partial('partials/testimonials', ['site' => $site]) ?>
 
+<?= View::partial('partials/brand_strip') ?>
+
 <?= View::partial('partials/contact', ['site' => $site]) ?>

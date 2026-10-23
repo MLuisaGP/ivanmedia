@@ -2,155 +2,81 @@
 declare(strict_types=1);
 
 /**
- * Marcas que ya confían en Ivan Media Visual Studio
- * Logos con fondo transparente y logos con marco circular para imágenes con fondo opaco.
+ * Sección 08: Marcas que ya confían en Ivan Media
  */
 $brands = [
     [
-        'name' => 'Pausa Café',
-        'sector' => 'Cafetería de Especialidad',
-        'type' => 'transparent',
-        'file' => 'pausa-cafe.png',
-    ],
-    [
         'name' => 'La Salsa',
         'sector' => 'Restaurante & Grill',
-        'type' => 'transparent',
         'file' => 'la-salsa.png',
+        'height' => 42,
+    ],
+    [
+        'name' => 'Pausa Café',
+        'sector' => 'Cafetería de Especialidad',
+        'file' => 'pausa-cafe-dark.png',
+        'height' => 36,
     ],
     [
         'name' => 'Phocas Mariscos',
         'sector' => 'Gastronomía de Mar',
-        'type' => 'transparent',
         'file' => 'phocas-mariscos.png',
+        'height' => 50,
     ],
     [
         'name' => 'Runfit Studio',
         'sector' => 'Fitness & Rendimiento',
-        'type' => 'transparent',
-        'file' => 'runfit.png',
+        'file' => 'runfit-dark.png',
+        'height' => 32,
     ],
     [
         'name' => 'Super Team',
         'sector' => 'Crossfit & Deporte',
-        'type' => 'transparent',
-        'file' => 'super-team.png',
+        'file' => 'super-team-dark.png',
+        'height' => 40,
     ],
     [
         'name' => 'Miguel\'s',
-        'sector' => 'Joyería & Relojes Finos',
-        'type' => 'transparent',
-        'file' => 'miguels-relojes.png',
-    ],
-    [
-        'name' => 'Confía Legal',
-        'sector' => 'Despacho Jurídico',
-        'type' => 'circle',
-        'file' => 'confia-legal.jpg',
-    ],
-    [
-        'name' => 'Loftara Wellness',
-        'sector' => 'Wellness & Living',
-        'type' => 'circle',
-        'file' => 'loftara-wellness.jpg',
-    ],
-    [
-        'name' => 'Lora Active',
-        'sector' => 'Ropa Deportiva & Moda',
-        'type' => 'circle',
-        'file' => 'lora-active.jpg',
-    ],
-    [
-        'name' => 'Skin Care Ana Quihui',
-        'sector' => 'Clínica Dermatológica',
-        'type' => 'circle',
-        'file' => 'skincare-ana-quihui.jpg',
+        'sector' => 'Joyería & Relojería',
+        'file' => 'miguels-relojes-dark.png',
+        'height' => 44,
     ],
     [
         'name' => 'RAM Gran Auto',
         'sector' => 'Sector Automotriz',
-        'type' => 'circle',
-        'file' => 'ram-gran-auto.png',
-    ],
-    [
-        'name' => 'Modeloz',
-        'sector' => 'Boutique & Moda',
-        'type' => 'circle',
-        'file' => 'modeloz.jpg',
+        'file' => 'ram-gran-auto-dark.png',
+        'height' => 48,
     ],
     [
         'name' => 'Dante y Nova',
-        'sector' => 'Cafetería & Panadería',
-        'type' => 'circle',
-        'file' => 'dante-nova.webp',
-    ],
-    [
-        'name' => 'Climóvil',
-        'sector' => 'Climatización & Servicios',
-        'type' => 'circle',
-        'file' => 'climovil.jpg',
+        'sector' => 'Café & Panadería',
+        'file' => 'dante-nova-clean.png',
+        'height' => 46,
     ],
 ];
 ?>
-<section class="trusted-brands-section" id="marcas" aria-label="Marcas que confían en nosotros">
+<section class="brands-section" id="marcas" aria-label="Marcas que confían en nosotros">
   <div class="container">
-    <div class="trusted-brands-header reveal">
-      <div class="trusted-brands-header-left">
-        <div class="section-label"><span>02</span> / Confianza y trayectoria</div>
-        <h2 class="trusted-brands-title">Marcas que ya confían en nosotros</h2>
-      </div>
-      <p class="trusted-brands-desc">
-        Hemos colaborado con marcas y negocios en Hermosillo y el noroeste de México para elevar su presencia audiovisual, destacar en redes y convertir vistas en clientes reales.
+    <div class="brands-header reveal">
+      <div class="section-label"><span>08</span> / Confianza y trayectoria</div>
+      <h2 class="brands-title">Marcas que ya <em>confían en nosotros.</em></h2>
+      <p class="brands-subtitle">
+        Proyectos, comercios y marcas locales y regionales que han impulsado su presencia y ventas a través de nuestra producción audiovisual.
       </p>
     </div>
 
-    <!-- Tira continua animada (Marquee) -->
-    <div class="trusted-brands-marquee" aria-hidden="true">
-      <div class="trusted-brands-track">
-        <?php for ($r = 0; $r < 2; $r++): ?>
-          <?php foreach ($brands as $b): ?>
-            <div class="trusted-brand-pill trusted-brand-pill--<?= $b['type'] ?>">
-              <?php if ($b['type'] === 'circle'): ?>
-                <span class="trusted-brand-circle">
-                  <img src="/assets/imagenes/logos/marcas/<?= $b['file'] ?>" alt="<?= e($b['name']) ?>" loading="lazy">
-                </span>
-                <span class="trusted-brand-pill-text">
-                  <strong><?= e($b['name']) ?></strong>
-                  <small><?= e($b['sector']) ?></small>
-                </span>
-              <?php else: ?>
-                <span class="trusted-brand-transparent-wrap">
-                  <img src="/assets/imagenes/logos/marcas/<?= $b['file'] ?>" alt="<?= e($b['name']) ?>" class="trusted-brand-logo-img" loading="lazy">
-                </span>
-                <span class="trusted-brand-pill-text">
-                  <strong><?= e($b['name']) ?></strong>
-                  <small><?= e($b['sector']) ?></small>
-                </span>
-              <?php endif; ?>
-            </div>
-          <?php endforeach; ?>
-        <?php endfor; ?>
-      </div>
-    </div>
-
-    <!-- Grid curado de marcas -->
-    <div class="trusted-brands-grid">
-      <?php foreach ($brands as $b): ?>
-        <div class="trusted-brand-card reveal">
-          <div class="trusted-brand-visual trusted-brand-visual--<?= $b['type'] ?>">
-            <?php if ($b['type'] === 'circle'): ?>
-              <div class="circle-avatar-frame">
-                <img src="/assets/imagenes/logos/marcas/<?= $b['file'] ?>" alt="<?= e($b['name']) ?>" loading="lazy">
-              </div>
-            <?php else: ?>
-              <div class="transparent-logo-frame">
-                <img src="/assets/imagenes/logos/marcas/<?= $b['file'] ?>" alt="<?= e($b['name']) ?>" loading="lazy">
-              </div>
-            <?php endif; ?>
+    <div class="brands-grid">
+      <?php foreach ($brands as $brand): ?>
+        <div class="brand-card reveal">
+          <div class="brand-card-logo">
+            <img src="/assets/imagenes/logos/marcas/<?= e($brand['file']) ?>" 
+                 alt="Logotipo de <?= e($brand['name']) ?>" 
+                 style="max-height: <?= (int)$brand['height'] ?>px;" 
+                 loading="lazy">
           </div>
-          <div class="trusted-brand-meta">
-            <span class="trusted-brand-badge"><?= e($b['sector']) ?></span>
-            <strong class="trusted-brand-title"><?= e($b['name']) ?></strong>
+          <div class="brand-card-details">
+            <strong class="brand-card-name"><?= e($brand['name']) ?></strong>
+            <span class="brand-card-sector"><?= e($brand['sector']) ?></span>
           </div>
         </div>
       <?php endforeach; ?>

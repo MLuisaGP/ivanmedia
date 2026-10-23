@@ -742,6 +742,124 @@ h2 { margin: 0; font: 700 clamp(38px, 5vw, 68px)/1.04 $font-display; letter-spac
 .testimonial-layout { display: grid; grid-template-columns: 1fr .8fr; gap: 9%; align-items: end; margin-top: 38px; }
 .testimonial-card { position: relative; padding: 30px 34px; background: $white; }
 .quote-mark { color: $slate; font: 700 60px Georgia, serif; line-height: .8; }
+
+// ============================================
+// SECCIÓN 08: MARCAS QUE YA CONFÍAN EN NOSOTROS
+// ============================================
+.brands-section {
+  padding: 95px 9% 105px;
+  background: #f8fafc;
+  border-top: 1px solid #eef2f6;
+  position: relative;
+
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+
+.brands-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 52px;
+
+  .section-label {
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+}
+
+.brands-title {
+  margin: 0 0 14px;
+  font: 700 clamp(30px, 3.8vw, 46px)/1.12 $font-display;
+  letter-spacing: -.05em;
+  color: $navy;
+
+  em {
+    color: $slate;
+    font-style: normal;
+  }
+}
+
+.brands-subtitle {
+  margin: 0 auto;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #64748b;
+  max-width: 580px;
+}
+
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.brand-card {
+  background: $white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 28px 24px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  text-align: center;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(2, 27, 57, 0.07);
+    border-color: #cbd5e1;
+
+    .brand-card-logo img {
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+  }
+}
+
+.brand-card-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  width: 100%;
+
+  img {
+    width: auto;
+    max-width: 82%;
+    object-fit: contain;
+    filter: grayscale(15%);
+    transition: filter .25s ease, transform .25s ease;
+  }
+}
+
+.brand-card-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  border-top: 1px solid #f1f5f9;
+  width: 100%;
+  padding-top: 14px;
+}
+
+.brand-card-name {
+  font: 700 13px $font-display;
+  color: $navy;
+  letter-spacing: -.01em;
+}
+
+.brand-card-sector {
+  font-size: 10px;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: .02em;
+}
+
 .section-blue { color: $white; background: $slate; }
 .contact-section { position: relative; overflow: hidden; padding: 85px 9% 25px; color: $navy; background: $slate; }
 .contact-orbit { position: absolute; top: -220px; right: -80px; width: 550px; height: 550px; border: 1px solid #ffffff50; border-radius: 50%; box-shadow: 0 0 0 55px #ffffff0d, 0 0 0 110px #ffffff0d, 0 0 0 165px #ffffff0d; pointer-events: none; }
@@ -1879,7 +1997,8 @@ body.page-niche .site-header {
   .hero { grid-template-columns: 1fr .8fr; padding-right: 7%; padding-left: 7%; }
   .hero h1 { font-size: clamp(48px, 7vw, 72px); }
   .hero-art { margin-left: 0; min-height: 350px; }
-  .about-me, .intro, .work-section, .services, .results, .package-section, .testimonials, .testimonials-section { padding-right: 7%; padding-left: 7%; }
+  .about-me, .intro, .work-section, .services, .results, .package-section, .testimonials, .testimonials-section, .brands-section { padding-right: 7%; padding-left: 7%; }
+  .brands-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .testimonials-header { flex-direction: column; align-items: flex-start; gap: 18px; margin-bottom: 34px; }
   .testimonials-stats-bar { grid-template-columns: repeat(2, 1fr); gap: 20px; .testi-stat-sep { display: none; } }
   .testimonials-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
@@ -2206,6 +2325,11 @@ body.page-niche .site-header {
   .package-left, .package-right { padding: 30px 25px; }
   .package-card h2 { font-size: 50px; }
   .testimonials-section { padding: 70px 6%; }
+  .brands-section { padding: 65px 6%; }
+  .brands-title { font-size: clamp(26px, 8vw, 36px); }
+  .brands-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .brand-card { padding: 20px 14px 16px; gap: 14px; }
+  .brand-card-logo { height: 50px; }
   .testimonials-title { font-size: clamp(28px, 8.5vw, 38px); }
   .testimonials-stats-bar { grid-template-columns: 1fr; padding: 20px 22px; gap: 16px; }
   .testimonials-grid { grid-template-columns: 1fr; gap: 16px; }
