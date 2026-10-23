@@ -19,9 +19,9 @@ declare(strict_types=1);
         <span>Paquete a tu medida</span>
         <strong>Hablemos</strong>
       </div>
-      <a class="button button-light" href="<?= e($site->whatsapp) ?>" target="_blank" rel="noopener">
+      <button type="button" class="button button-light btn-quote" data-open-quote aria-haspopup="dialog">
         Personalizar mi paquete <?= icon('arrow-up-right') ?>
-      </a>
+      </button>
     </div>
     <div class="package-right">
       <div class="package-includes">

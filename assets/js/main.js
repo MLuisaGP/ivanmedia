@@ -19,10 +19,12 @@
 
   const progress = document.querySelector('#scrollProgress');
   const backTop = document.querySelector('.back-top');
+  const siteHeader = document.querySelector('.site-header');
   const updateScroll = () => {
     const max = document.documentElement.scrollHeight - window.innerHeight;
     if (progress) progress.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
     if (backTop) backTop.classList.toggle('is-visible', window.scrollY > 300);
+    if (siteHeader) siteHeader.classList.toggle('is-scrolled', window.scrollY > 20);
   };
   window.addEventListener('scroll', updateScroll, { passive: true });
   updateScroll();
@@ -242,8 +244,10 @@
     if (formEl) formEl.scrollTop = 0;
 
     const activePane = quoteModal?.querySelector(`.quote-step-pane[data-step="${step}"]`);
-    const firstInput = activePane?.querySelector('input:not([type="hidden"]), textarea, select');
-    firstInput?.focus();
+    if (window.innerWidth > 650) {
+      const firstInput = activePane?.querySelector('input:not([type="hidden"]), textarea, select');
+      firstInput?.focus();
+    }
   };
 
   const markFieldInvalid = (element, isInvalid) => {

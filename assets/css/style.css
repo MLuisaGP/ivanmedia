@@ -66,16 +66,26 @@ img {
   background: #90A9C8;
 }
 .site-header {
-  position: absolute;
-  z-index: 50;
+  position: fixed;
+  z-index: 100;
   top: 0;
   left: 0;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 6.3%;
+  padding: 22px 6.3%;
   color: #FFFFFF;
+  background: transparent;
+  transition: padding 0.3s var(--ease), background 0.3s var(--ease), box-shadow 0.3s var(--ease), backdrop-filter 0.3s ease;
+}
+.site-header.is-scrolled, .site-header--solid, body.page-niche .site-header {
+  padding: 14px 6.3%;
+  background: rgba(2, 27, 57, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
 }
 .brand {
   display: inline-flex;
@@ -888,7 +898,9 @@ h2 {
   justify-content: space-between;
   gap: 30px;
   padding: 16px 20px;
+  border: 0;
   border-radius: 2px;
+  cursor: pointer;
   font-size: 11px;
   font-weight: 700;
   transition: transform 0.2s, background 0.2s;
@@ -3060,10 +3072,111 @@ h2 {
     font-size: 50px;
   }
   .testimonials-section {
-    padding: 70px 6%;
+    padding: 65px 5%;
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .testimonials-section .container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  .testimonials-title {
+    font-size: clamp(26px, 8vw, 36px);
+  }
+  .testimonials-stats-bar {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px 16px;
+    gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .testimonials-stats-bar .testi-stat-sep {
+    display: none !important;
+  }
+  .testimonials-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .testi-card {
+    padding: 22px 18px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    word-break: break-word;
+  }
+  .testi-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+    min-width: 0;
+  }
+  .testi-metric-pill {
+    white-space: normal;
+    text-align: right;
+    font-size: 9.5px;
+    padding: 3px 8px;
+    max-width: 100%;
+  }
+  .testi-quote-wrap {
+    width: 100%;
+    min-width: 0;
+  }
+  .testi-quote-text {
+    font-size: 13px;
+    line-height: 1.65;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .testi-author-row {
+    width: 100%;
+    min-width: 0;
+    gap: 11px;
+  }
+  .testi-author-info {
+    min-width: 0;
+    flex: 1;
+    overflow: hidden;
+  }
+  .testi-author-role {
+    white-space: normal;
+    line-height: 1.35;
+    font-size: 10.5px;
+  }
+  .testimonials-footer-banner {
+    padding: 24px 18px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .testimonials-footer-banner .testi-banner-content h3 {
+    font-size: 20px;
+  }
+  .testimonials-footer-banner .testi-banner-cta {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    white-space: normal;
+    padding: 14px 20px;
   }
   .brands-section {
-    padding: 65px 6%;
+    padding: 65px 5%;
+    width: 100%;
+    box-sizing: border-box;
   }
   .brands-title {
     font-size: clamp(26px, 8vw, 36px);
@@ -3078,24 +3191,6 @@ h2 {
   }
   .brand-card-logo {
     height: 50px;
-  }
-  .testimonials-title {
-    font-size: clamp(28px, 8.5vw, 38px);
-  }
-  .testimonials-stats-bar {
-    grid-template-columns: 1fr;
-    padding: 20px 22px;
-    gap: 16px;
-  }
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  .testi-card {
-    padding: 24px 22px;
-  }
-  .testimonials-footer-banner {
-    padding: 26px 20px;
   }
   .testimonial-layout {
     margin-top: 28px;
@@ -3167,6 +3262,7 @@ h2 {
   border-radius: 16px;
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
   overflow: hidden;
+  min-height: 0;
 }
 .quote-modal-close {
   position: absolute;
@@ -3197,6 +3293,7 @@ h2 {
   padding: 30px 36px 18px;
   border-bottom: 1px solid rgba(215, 234, 255, 0.1);
   background: rgba(2, 27, 57, 0.5);
+  flex-shrink: 0;
 }
 .quote-modal-eyebrow {
   display: inline-flex;
@@ -3303,8 +3400,11 @@ h2 {
 }
 .quote-form {
   padding: 26px 36px 32px;
+  flex: 1 1 auto;
+  min-height: 0;
   overflow-y: auto;
-  max-height: calc(92vh - 200px);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
 }
 .quote-step-pane {
   display: none;
@@ -3706,42 +3806,157 @@ h2 {
   box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
 }
 @media (max-width: 650px) {
+  .quote-modal {
+    position: fixed;
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    width: auto;
+    max-width: none;
+    height: auto;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .quote-modal[open] {
+    display: flex;
+    flex-direction: column;
+  }
+  .quote-modal-card {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
   .quote-modal-header {
-    padding: 24px 20px 16px;
+    padding: 16px 18px 10px;
+    flex-shrink: 0;
+  }
+  .quote-modal-eyebrow {
+    font-size: 9px;
+    margin-bottom: 3px;
+  }
+  .quote-modal-title {
+    font-size: 18px;
+    line-height: 1.25;
+    margin-bottom: 2px;
+    padding-right: 36px;
+  }
+  .quote-modal-subtitle {
+    display: none;
   }
   .quote-modal-close {
-    top: 14px;
-    right: 14px;
-    width: 34px;
-    height: 34px;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
   }
-  .quote-form {
-    padding: 20px 20px 28px;
-    max-height: calc(94vh - 180px);
+  .quote-modal-close .svg-icon {
+    width: 13px;
+    height: 13px;
   }
-  .quote-fields-grid {
-    grid-template-columns: 1fr;
-  }
-  .quote-choices-grid.quote-choices-3, .quote-choices-grid.quote-choices-2 {
-    grid-template-columns: 1fr;
+  .quote-stepper {
+    padding: 8px 0 6px;
+    gap: 4px;
+    justify-content: space-between;
+    overflow: visible;
   }
   .quote-step-btn {
-    padding: 5px 9px;
+    padding: 4px 6px;
+    gap: 0;
+  }
+  .quote-step-btn .step-num {
+    width: 24px;
+    height: 24px;
     font-size: 10px;
   }
   .quote-step-btn .step-label {
     display: none;
   }
+  .quote-step-divider {
+    min-width: 4px;
+  }
+  .quote-form {
+    padding: 18px 18px 24px;
+    flex: 1 1 auto;
+    min-height: 0;
+    max-height: none !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+  .quote-step-heading {
+    margin-bottom: 18px;
+  }
+  .quote-step-heading .quote-step-tag {
+    font-size: 9px;
+    padding: 2px 7px;
+    margin-bottom: 5px;
+  }
+  .quote-step-heading h3 {
+    font-size: 17px;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .quote-step-heading p {
+    font-size: 12px;
+    line-height: 1.45;
+    color: #9cb5cf;
+  }
+  .form-group {
+    margin-bottom: 16px;
+    gap: 7px;
+  }
+  .form-group label, .form-group .group-title {
+    font-size: 12.5px;
+    line-height: 1.35;
+  }
+  .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="tel"], .form-group textarea {
+    padding: 12px 14px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+  .form-group textarea {
+    min-height: 72px;
+  }
+  .quote-fields-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .quote-choices-grid.quote-choices-3, .quote-choices-grid.quote-choices-2 {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+  .choice-card .choice-box {
+    padding: 12px 14px;
+    min-height: 44px;
+    font-size: 12.5px;
+  }
   .quote-step-actions {
+    margin-top: 22px;
+    padding-top: 18px;
     flex-direction: column-reverse;
     gap: 12px;
   }
   .quote-step-actions .btn-step-next, .quote-step-actions .btn-step-submit, .quote-step-actions .btn-step-prev {
     width: 100%;
     justify-content: center;
+    padding: 14px 20px;
+    font-size: 12.5px;
   }
   .quote-success-view {
-    padding: 30px 20px;
+    padding: 28px 18px;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .quote-success-actions {
     flex-direction: column;
