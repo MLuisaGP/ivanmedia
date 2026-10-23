@@ -22,10 +22,10 @@ declare(strict_types=1);
   </div>
   <div class="hero-art" aria-label="Collage de fotografía creativa">
     <div class="art-frame art-frame-main">
-      <img src="assets/fotos/negocio-general/golden-hour-padel.jpg" alt="Fotografía editorial deportiva al atardecer en Hermosillo" width="1066" height="1600">
+      <img src="https://res.cloudinary.com/dbs1ypch/image/upload/v1792731787/home/ivan%20portafolio/negocio_golden-hour-padel.jpg" alt="Fotografía editorial deportiva al atardecer en Hermosillo" width="1066" height="1600">
     </div>
     <div class="art-frame art-frame-small">
-      <img src="assets/fotos/cafeteria/latte-art-barista.jpg" alt="Detalle de arte latte en taza artesanal" width="700" height="1200">
+      <img src="https://res.cloudinary.com/dbs1ypch/image/upload/v1792769884/24-DSC04817.webp" alt="Detalle de arte matcha en las rocas" width="700" height="1200">
     </div>
     <div class="art-sticker"><span>Creatividad<br>en movimiento</span><b><?= icon('sparkle') ?></b></div>
     <div class="art-caption">01 / Visual Storytelling</div>
