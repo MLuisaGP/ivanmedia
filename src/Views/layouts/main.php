@@ -38,6 +38,7 @@ declare(strict_types=1);
   <?= \App\Core\View::partial('partials/footer', ['site' => $site, 'allNiches' => $allNiches ?? null]) ?>
 
   <?= \App\Core\View::partial('partials/modal') ?>
+  <?= \App\Core\View::partial('partials/quote_modal', ['site' => $site]) ?>
 
   <a class="back-top" href="#top" aria-label="Volver al inicio"><?= icon('arrow-up') ?></a>
   <script src="/assets/js/main.js" defer></script>

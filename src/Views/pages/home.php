@@ -25,6 +25,6 @@ use App\Core\View;
 
 <?= View::partial('partials/pricing', ['site' => $site]) ?>
 
-<?= View::partial('partials/testimonials') ?>
+<?= View::partial('partials/testimonials', ['site' => $site]) ?>
 
 <?= View::partial('partials/contact', ['site' => $site]) ?>

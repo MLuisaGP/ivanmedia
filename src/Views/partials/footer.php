@@ -15,7 +15,7 @@ $niches = $allNiches ?? (new NicheRepository())->getAll();
       <!-- Columna 1: Marca y Propuesta -->
       <div class="footer-col footer-col--brand">
         <a class="brand brand--footer" href="/" aria-label="<?= e($site->name) ?>, inicio">
-          <img src="/assets/imagenes/logos/ivan.Media.png" alt="<?= e($site->name) ?>" class="brand-logo brand-logo--footer" width="160" height="48">
+          <img src="/assets/imagenes/logos/ivan.Media.png" alt="<?= e($site->name) ?>" class="brand-logo brand-logo--footer" width="240" height="56">
         </a>
         <p class="footer-brand-desc">
           Dirección y creación de contenido audiovisual comercial en Hermosillo, Sonora. Fotografía de alto impacto, producción de reels y estrategia visual para marcas que quieren destacar.

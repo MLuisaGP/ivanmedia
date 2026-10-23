@@ -140,10 +140,10 @@ $testimonials = [
         <h3>¿Listo para que tu marca sea el próximo caso de éxito?</h3>
         <p>Hablemos de tus metas comerciales y definamos la estrategia audiovisual ideal para tu negocio.</p>
       </div>
-      <a href="https://wa.me/526621234567" target="_blank" rel="noopener" class="testi-banner-cta">
+      <button type="button" class="testi-banner-cta btn-quote" data-open-quote aria-haspopup="dialog">
         <span>Cotizar mi producción</span>
         <span class="testi-cta-icon" aria-hidden="true"><?= icon('arrow-up-right') ?></span>
-      </a>
+      </button>
     </div>
   </div>
 </section>

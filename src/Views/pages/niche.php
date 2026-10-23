@@ -35,7 +35,7 @@ declare(strict_types=1);
 
           <!-- CTA Buttons -->
           <div class="niche-hero-actions">
-            <button type="button" class="btn-quote" aria-disabled="true">
+            <button type="button" class="btn-quote" aria-haspopup="dialog">
               <span>Realizar cotización</span>
               <span class="btn-quote-icon" aria-hidden="true"><?= icon('arrow-up-right') ?></span>
             </button>
@@ -171,7 +171,7 @@ declare(strict_types=1);
           <p>Convierte la imagen de tu marca en un motor de ventas y reservas con producción audiovisual comercial de alto impacto.</p>
         </div>
         <div class="niche-bottom-actions">
-          <button type="button" class="btn-quote" aria-disabled="true">
+          <button type="button" class="btn-quote" aria-haspopup="dialog">
             <span>Realizar cotización</span>
             <span class="btn-quote-icon" aria-hidden="true"><?= icon('arrow-up-right') ?></span>
           </button>

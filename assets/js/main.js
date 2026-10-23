@@ -162,12 +162,302 @@
     });
   });
 
-  // Buttons for quote placeholder (inactive as requested by client)
-  document.querySelectorAll('.btn-quote').forEach(btn => {
-    btn.addEventListener('click', event => {
-      event.preventDefault();
+  // ============================================
+  // MODAL DE COTIZACIÓN MULTI-STEP
+  // ============================================
+  const quoteModal = document.querySelector('#quoteModal');
+  const quoteModalClose = document.querySelector('#quoteModalClose');
+  const quoteForm = document.querySelector('#quoteForm');
+  const quoteSuccessView = document.querySelector('#quoteSuccessView');
+  const quoteProgressBar = document.querySelector('#quoteProgressBar');
+  const quoteStepperBtns = document.querySelectorAll('.quote-step-btn');
+  const quoteStepPanes = document.querySelectorAll('.quote-step-pane');
+  const checkObjetivoOtro = document.querySelector('#checkObjetivoOtro');
+  const quoteOtherField = document.querySelector('#quoteOtherField');
+  const btnSuccessClose = document.querySelector('#btnSuccessClose');
+  const quoteSummaryCard = document.querySelector('#quoteSummaryCard');
+
+  let currentQuoteStep = 1;
+  const totalQuoteSteps = 5;
+
+  const openQuoteModal = () => {
+    if (!quoteModal) return;
+    if (typeof quoteModal.showModal === 'function') {
+      quoteModal.showModal();
+    } else {
+      quoteModal.setAttribute('open', '');
+    }
+    document.body.classList.add('modal-open');
+    if (quoteForm) quoteForm.style.display = 'block';
+    if (quoteSuccessView) quoteSuccessView.style.display = 'none';
+    goToQuoteStep(1);
+  };
+
+  const closeQuoteModal = () => {
+    if (!quoteModal) return;
+    if (quoteModal.open) {
+      if (typeof quoteModal.close === 'function') {
+        quoteModal.close();
+      } else {
+        quoteModal.removeAttribute('open');
+      }
+    }
+    document.body.classList.remove('modal-open');
+  };
+
+  const updateProgressBar = (step) => {
+    if (!quoteProgressBar) return;
+    const percent = Math.min((step / totalQuoteSteps) * 100, 100);
+    quoteProgressBar.style.width = `${percent}%`;
+  };
+
+  const updateStepper = (step) => {
+    quoteStepperBtns.forEach(btn => {
+      const targetStep = parseInt(btn.dataset.stepTarget, 10);
+      btn.classList.toggle('is-active', targetStep === step);
+      btn.classList.toggle('is-completed', targetStep < step);
+      if (targetStep === step) {
+        btn.setAttribute('aria-current', 'step');
+      } else {
+        btn.removeAttribute('aria-current');
+      }
+    });
+  };
+
+  const goToQuoteStep = (step) => {
+    if (step < 1 || step > totalQuoteSteps) return;
+    currentQuoteStep = step;
+
+    quoteStepPanes.forEach(pane => {
+      const paneStep = parseInt(pane.dataset.step, 10);
+      pane.classList.toggle('is-active', paneStep === step);
+    });
+
+    updateProgressBar(step);
+    updateStepper(step);
+
+    const card = quoteModal?.querySelector('.quote-modal-card');
+    if (card) card.scrollTop = 0;
+    const formEl = quoteModal?.querySelector('.quote-form');
+    if (formEl) formEl.scrollTop = 0;
+
+    const activePane = quoteModal?.querySelector(`.quote-step-pane[data-step="${step}"]`);
+    const firstInput = activePane?.querySelector('input:not([type="hidden"]), textarea, select');
+    firstInput?.focus();
+  };
+
+  const markFieldInvalid = (element, isInvalid) => {
+    const group = element.closest('.form-group');
+    if (group) {
+      group.classList.toggle('is-invalid', isInvalid);
+    }
+  };
+
+  quoteForm?.querySelectorAll('input, textarea, select').forEach(input => {
+    input.addEventListener('input', () => markFieldInvalid(input, false));
+    input.addEventListener('change', () => markFieldInvalid(input, false));
+  });
+
+  const validateQuoteStep = (step) => {
+    let isValid = true;
+    let firstInvalid = null;
+
+    if (step === 1) {
+      const nombre = quoteForm.querySelector('#q_nombre');
+      const marca = quoteForm.querySelector('#q_marca');
+      const email = quoteForm.querySelector('#q_email');
+      const telefono = quoteForm.querySelector('#q_telefono');
+
+      if (!nombre?.value.trim()) {
+        markFieldInvalid(nombre, true);
+        isValid = false;
+        if (!firstInvalid) firstInvalid = nombre;
+      }
+      if (!marca?.value.trim()) {
+        markFieldInvalid(marca, true);
+        isValid = false;
+        if (!firstInvalid) firstInvalid = marca;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email?.value.trim() || !emailRegex.test(email.value.trim())) {
+        markFieldInvalid(email, true);
+        isValid = false;
+        if (!firstInvalid) firstInvalid = email;
+      }
+      if (!telefono?.value.trim() || telefono.value.trim().length < 7) {
+        markFieldInvalid(telefono, true);
+        isValid = false;
+        if (!firstInvalid) firstInvalid = telefono;
+      }
+    } else if (step === 2) {
+      const giro = quoteForm.querySelector('#q_giro');
+      const tiempoSelected = quoteForm.querySelector('input[name="tiempo_mercado"]:checked');
+      const canalesSelected = quoteForm.querySelector('input[name="canales_digitales"]:checked');
+
+      if (!giro?.value.trim()) {
+        markFieldInvalid(giro, true);
+        isValid = false;
+        if (!firstInvalid) firstInvalid = giro;
+      }
+      if (!tiempoSelected) {
+        const group = quoteForm.querySelector('#groupTiempoMercado')?.closest('.form-group');
+        group?.classList.add('is-invalid');
+        isValid = false;
+        if (!firstInvalid) firstInvalid = group;
+      }
+      if (!canalesSelected) {
+        const group = quoteForm.querySelector('#groupCanalesDigitales')?.closest('.form-group');
+        group?.classList.add('is-invalid');
+        isValid = false;
+        if (!firstInvalid) firstInvalid = group;
+      }
+    } else if (step === 3) {
+      const resultadoChecked = quoteForm.querySelectorAll('input[name="resultado_ideal[]"]:checked');
+      if (resultadoChecked.length === 0) {
+        const group = quoteForm.querySelector('#groupResultadoIdeal')?.closest('.form-group');
+        group?.classList.add('is-invalid');
+        isValid = false;
+        if (!firstInvalid) firstInvalid = group;
+      }
+    } else if (step === 4) {
+      const clienteIdeal = quoteForm.querySelector('#q_cliente_ideal');
+      const competidores = quoteForm.querySelector('#q_competidores');
+
+      if (!clienteIdeal?.value.trim()) {
+        markFieldInvalid(clienteIdeal, true);
+        isValid = false;
+        if (!firstInvalid) firstInvalid = clienteIdeal;
+      }
+      if (!competidores?.value.trim()) {
+        markFieldInvalid(competidores, true);
+        isValid = false;
+        if (!firstInvalid) firstInvalid = competidores;
+      }
+    } else if (step === 5) {
+      const presupuestoSelected = quoteForm.querySelector('input[name="presupuesto"]:checked');
+      if (!presupuestoSelected) {
+        const group = quoteForm.querySelector('#groupPresupuesto')?.closest('.form-group');
+        group?.classList.add('is-invalid');
+        isValid = false;
+        if (!firstInvalid) firstInvalid = group;
+      }
+    }
+
+    if (!isValid && firstInvalid) {
+      if (typeof firstInvalid.focus === 'function') firstInvalid.focus();
+      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    return isValid;
+  };
+
+  quoteForm?.querySelectorAll('.btn-step-next').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const nextStep = parseInt(btn.dataset.next, 10);
+      if (validateQuoteStep(currentQuoteStep)) {
+        goToQuoteStep(nextStep);
+      }
     });
   });
+
+  quoteForm?.querySelectorAll('.btn-step-prev').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const prevStep = parseInt(btn.dataset.prev, 10);
+      goToQuoteStep(prevStep);
+    });
+  });
+
+  quoteStepperBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetStep = parseInt(btn.dataset.stepTarget, 10);
+      if (targetStep < currentQuoteStep) {
+        goToQuoteStep(targetStep);
+      } else if (targetStep > currentQuoteStep) {
+        if (validateQuoteStep(currentQuoteStep)) {
+          goToQuoteStep(targetStep);
+        }
+      }
+    });
+  });
+
+  checkObjetivoOtro?.addEventListener('change', () => {
+    if (quoteOtherField) {
+      quoteOtherField.style.display = checkObjetivoOtro.checked ? 'block' : 'none';
+      if (checkObjetivoOtro.checked) {
+        quoteOtherField.querySelector('input')?.focus();
+      }
+    }
+  });
+
+  const escapeHtml = (str) => {
+    return String(str).replace(/[&<>'"]/g, tag => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    }[tag] || tag));
+  };
+
+  quoteForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!validateQuoteStep(5)) return;
+
+    const submitBtn = quoteForm.querySelector('#btnSubmitQuote');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Procesando solicitud...</span>';
+    }
+
+    const formData = new FormData(quoteForm);
+
+    if (quoteSummaryCard) {
+      const nombre = (formData.get('nombre') || '').toString();
+      const marca = (formData.get('marca') || '').toString();
+      const email = (formData.get('email') || '').toString();
+      const tel = (formData.get('telefono') || '').toString();
+      const presupuesto = (formData.get('presupuesto') || '').toString();
+
+      quoteSummaryCard.innerHTML = `
+        <div class="summary-row"><span>Solicitante:</span> <strong>${escapeHtml(nombre)}</strong></div>
+        <div class="summary-row"><span>Marca / Negocio:</span> <strong>${escapeHtml(marca)}</strong></div>
+        <div class="summary-row"><span>Correo:</span> <strong>${escapeHtml(email)}</strong></div>
+        <div class="summary-row"><span>WhatsApp / Tel:</span> <strong>${escapeHtml(tel)}</strong></div>
+        <div class="summary-row"><span>Presupuesto estimado:</span> <strong>${escapeHtml(presupuesto)}</strong></div>
+      `;
+    }
+
+    setTimeout(() => {
+      if (quoteForm) quoteForm.style.display = 'none';
+      if (quoteSuccessView) quoteSuccessView.style.display = 'block';
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<span>Enviar solicitud de cotización</span>';
+      }
+    }, 400);
+  });
+
+  btnSuccessClose?.addEventListener('click', () => {
+    closeQuoteModal();
+    setTimeout(() => {
+      quoteForm?.reset();
+      goToQuoteStep(1);
+      if (quoteOtherField) quoteOtherField.style.display = 'none';
+    }, 300);
+  });
+
+  document.querySelectorAll('.btn-quote, [data-open-quote]').forEach(btn => {
+    btn.addEventListener('click', event => {
+      event.preventDefault();
+      openQuoteModal();
+    });
+  });
+
+  quoteModalClose?.addEventListener('click', closeQuoteModal);
+  quoteModal?.addEventListener('click', event => {
+    if (event.target === quoteModal) closeQuoteModal();
+  });
+  quoteModal?.addEventListener('close', () => document.body.classList.remove('modal-open'));
 
   document.querySelector('#modalClose')?.addEventListener('click', closeModal);
   modal?.addEventListener('click', event => {
@@ -235,6 +525,7 @@
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
       closeModal();
+      closeQuoteModal();
       closeNav();
     }
   });
