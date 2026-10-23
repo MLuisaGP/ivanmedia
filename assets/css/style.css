@@ -95,6 +95,27 @@ img {
   gap: 10px;
   font: 800 13px "Manrope", sans-serif;
   letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.brand-logo {
+  display: block;
+  height: 42px;
+  width: 140px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 4px;
+  transition: transform 0.25s var(--ease), opacity 0.25s ease;
+}
+
+.brand:hover .brand-logo {
+  transform: scale(1.02);
+  opacity: 0.95;
+}
+
+.brand-logo--footer {
+  height: 48px;
+  width: 160px;
 }
 
 .brand small {
@@ -1353,26 +1374,34 @@ h2 {
 
 .back-top {
   position: fixed;
-  z-index: 30;
-  right: 22px;
-  bottom: 22px;
+  z-index: 99;
+  right: 24px;
+  bottom: 24px;
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
-  border: 1px solid rgba(255, 255, 255, 0.2509803922);
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 50%;
   color: #FFFFFF;
   background: #021B39;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   opacity: 0;
   pointer-events: none;
   transform: translateY(10px);
-  transition: 0.25s;
+  transition: all 0.25s var(--ease);
+  cursor: pointer;
 }
 .back-top .svg-icon {
   width: 18px;
   height: 18px;
   transition: transform 0.25s ease;
+}
+.back-top:hover {
+  background: #D7EAFF;
+  color: #021B39;
+  border-color: #D7EAFF;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 .back-top:hover .svg-icon {
   transform: translateY(-2px);
@@ -1885,6 +1914,34 @@ body.page-niche .site-header {
   object-position: center center;
 }
 .pin-card--horizontal-crop:hover .pin-media-box img {
+  transform: scale(1.04);
+}
+
+.pin-card--square-crop .pin-media-box {
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+.pin-card--square-crop .pin-media-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+.pin-card--square-crop:hover .pin-media-box img {
+  transform: scale(1.04);
+}
+
+.pin-card--medium-crop .pin-media-box {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+.pin-card--medium-crop .pin-media-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+.pin-card--medium-crop:hover .pin-media-box img {
   transform: scale(1.04);
 }
 
@@ -2564,6 +2621,10 @@ body.page-niche .site-header {
     width: 34px;
     height: 34px;
   }
+  .brand-logo {
+    height: 34px;
+    width: 115px;
+  }
   .menu-toggle {
     display: flex;
     flex-direction: column;
@@ -2941,3 +3002,542 @@ body.page-niche .site-header {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+/* ==========================================================================
+   SECCIÓN DE MARCAS QUE YA CONFÍAN EN NOSOTROS (HOME)
+   Fondo azul oscuro, logos transparentes y marcos circulares
+   ========================================================================== */
+.trusted-brands-section {
+  position: relative;
+  padding: 85px 0 100px;
+  background: radial-gradient(circle at 50% 0%, #032A54 0%, #021B39 60%, #011329 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  overflow: hidden;
+}
+.trusted-brands-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(215, 234, 255, 0.4), transparent);
+}
+.trusted-brands-section .container {
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.trusted-brands-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.trusted-brands-header-left {
+  max-width: 650px;
+}
+.trusted-brands-header-left .niche-badge-pill {
+  margin-bottom: 12px;
+}
+.trusted-brands-header-left .section-label {
+  color: #90A9C8;
+  margin-bottom: 8px;
+}
+.trusted-brands-header-left .section-label span {
+  color: #D7EAFF;
+  border-color: rgba(215, 234, 255, 0.3);
+}
+.trusted-brands-title {
+  margin: 6px 0 0;
+  font: 800 clamp(28px, 3.2vw, 42px)/1.15 "Manrope", sans-serif;
+  letter-spacing: -0.035em;
+  color: #FFFFFF;
+}
+.trusted-brands-desc {
+  max-width: 520px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #90A9C8;
+}
+
+/* Marquee dinámico */
+.trusted-brands-marquee {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 42px;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+}
+.trusted-brands-track {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: max-content;
+  animation: brandsScroll 36s linear infinite;
+  padding: 10px 0;
+}
+.trusted-brands-marquee:hover .trusted-brands-track {
+  animation-play-state: paused;
+}
+@keyframes brandsScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.trusted-brand-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  padding: 8px 20px 8px 10px;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+.trusted-brand-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(215, 234, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.trusted-brand-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #011329;
+  border: 2px solid rgba(215, 234, 255, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+.trusted-brand-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trusted-brand-transparent-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding: 0 8px;
+  flex-shrink: 0;
+}
+.trusted-brand-logo-img {
+  max-height: 28px;
+  max-width: 110px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+}
+
+.trusted-brand-pill-text {
+  display: flex;
+  flex-direction: column;
+}
+.trusted-brand-pill-text strong {
+  font: 700 13px/1.2 "Manrope", sans-serif;
+  color: #FFFFFF;
+}
+.trusted-brand-pill-text small {
+  font-size: 11px;
+  color: #90A9C8;
+}
+
+/* Grid de marcas */
+.trusted-brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+}
+.trusted-brand-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  padding: 22px 14px 18px;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.trusted-brand-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(215, 234, 255, 0.35);
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.trusted-brand-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 72px;
+  margin-bottom: 14px;
+  width: 100%;
+}
+.circle-avatar-frame {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(215, 234, 255, 0.25);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+  background: #011329;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.circle-avatar-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.trusted-brand-card:hover .circle-avatar-frame {
+  transform: scale(1.08);
+  border-color: #D7EAFF;
+}
+
+.transparent-logo-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.transparent-logo-frame img {
+  max-width: 125px;
+  max-height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.trusted-brand-card:hover .transparent-logo-frame img {
+  transform: scale(1.08);
+  filter: drop-shadow(0 4px 12px rgba(215, 234, 255, 0.3));
+}
+
+.trusted-brand-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.trusted-brand-badge {
+  font: 700 9px/1.2 "Manrope", sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #90A9C8;
+}
+.trusted-brand-title {
+  font: 700 13px/1.3 "Manrope", sans-serif;
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   SECCIÓN DE CASOS DE ÉXITO & OPINIONES DE CLIENTES (TESTIMONIOS)
+   ========================================================================== */
+.testimonials-section {
+  position: relative;
+  padding: 105px 0 120px;
+  background: radial-gradient(circle at 50% 0%, #03254C 0%, #011329 65%, #010D1C 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  overflow: hidden;
+}
+.testimonials-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(215, 234, 255, 0.35), transparent);
+}
+.testimonials-section .container {
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.testimonials-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.testimonials-header-left {
+  max-width: 680px;
+}
+.testimonials-header-left .niche-badge-pill {
+  margin-bottom: 12px;
+}
+.testimonials-header-left .section-label {
+  color: #90A9C8;
+  margin-bottom: 8px;
+}
+.testimonials-header-left .section-label span {
+  color: #D7EAFF;
+  border-color: rgba(215, 234, 255, 0.3);
+}
+.testimonials-title {
+  margin: 6px 0 0;
+  font: 800 clamp(28px, 3.4vw, 44px)/1.15 "Manrope", sans-serif;
+  letter-spacing: -0.035em;
+  color: #FFFFFF;
+}
+.testimonials-title em {
+  font-style: normal;
+  color: #D7EAFF;
+  text-decoration: underline;
+  text-decoration-color: rgba(215, 234, 255, 0.3);
+  text-underline-offset: 6px;
+}
+.testimonials-subtitle {
+  max-width: 520px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #90A9C8;
+}
+
+/* Barra de métricas */
+.testimonials-stats-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px 36px;
+  margin-bottom: 48px;
+  backdrop-filter: blur(10px);
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.testi-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.testi-stat-number {
+  font: 800 clamp(22px, 2.5vw, 32px)/1 "Manrope", sans-serif;
+  color: #D7EAFF;
+  letter-spacing: -0.03em;
+}
+.testi-stat-label {
+  font-size: 12px;
+  color: #90A9C8;
+  line-height: 1.4;
+}
+.testi-stat-sep {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Grid de testimonios */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.testi-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 28px 26px 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.testi-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(215, 234, 255, 0.35);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), 0 0 20px rgba(215, 234, 255, 0.1);
+}
+
+.testi-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.testi-stars {
+  display: inline-flex;
+  gap: 3px;
+  color: #FFC107;
+  font-size: 14px;
+}
+.testi-metric-pill {
+  display: inline-block;
+  font: 700 11px/1 "Manrope", sans-serif;
+  letter-spacing: 0.04em;
+  background: rgba(215, 234, 255, 0.12);
+  color: #D7EAFF;
+  border: 1px solid rgba(215, 234, 255, 0.2);
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+
+.testi-quote-wrap {
+  position: relative;
+  flex-grow: 1;
+  margin-bottom: 22px;
+}
+.testi-quote-icon {
+  font-family: Georgia, serif;
+  font-size: 48px;
+  line-height: 1;
+  color: rgba(215, 234, 255, 0.18);
+  position: absolute;
+  top: -10px;
+  left: -4px;
+  pointer-events: none;
+}
+.testi-quote-text {
+  position: relative;
+  margin: 0;
+  font: 500 14px/1.65 "DM Sans", sans-serif;
+  color: #cbd5e1;
+  padding-left: 18px;
+}
+
+.testi-author-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: auto;
+}
+.testi-avatar {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #033266 0%, #0A4D94 100%);
+  color: #D7EAFF;
+  font: 800 13px "Manrope", sans-serif;
+  border: 2px solid rgba(215, 234, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+.testi-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.testi-author-name {
+  font: 700 14px/1.2 "Manrope", sans-serif;
+  color: #FFFFFF;
+}
+.testi-author-role {
+  font-size: 12px;
+  color: #90A9C8;
+  line-height: 1.3;
+}
+.testi-sector-tag {
+  font: 700 10px/1.2 "Manrope", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #D7EAFF;
+  margin-top: 2px;
+}
+
+/* Banner de cierre de testimonios */
+.testimonials-footer-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  background: linear-gradient(135deg, rgba(3, 42, 84, 0.8) 0%, rgba(2, 27, 57, 0.95) 100%);
+  border: 1px solid rgba(215, 234, 255, 0.25);
+  border-radius: 18px;
+  padding: 32px 40px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  flex-wrap: wrap;
+}
+.testi-banner-content {
+  max-width: 650px;
+}
+.testi-banner-content h3 {
+  margin: 0 0 6px;
+  font: 800 clamp(20px, 2.2vw, 26px)/1.2 "Manrope", sans-serif;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+.testi-banner-content p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #90A9C8;
+}
+.testi-banner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #D7EAFF;
+  color: #021B39;
+  font: 700 14px "Manrope", sans-serif;
+  letter-spacing: 0.02em;
+  padding: 14px 26px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(215, 234, 255, 0.25);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.testi-banner-cta:hover {
+  background: #FFFFFF;
+  color: #011329;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(215, 234, 255, 0.4);
+}
+.testi-cta-icon .svg-icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.25s ease;
+}
+.testi-banner-cta:hover .testi-cta-icon .svg-icon {
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 768px) {
+  .testimonials-stats-bar {
+    padding: 20px;
+    gap: 16px;
+  }
+  .testi-stat-sep {
+    display: none;
+  }
+  .testimonials-footer-banner {
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .testi-banner-cta {
+    width: 100%;
+    justify-content: center;
+  }
+}

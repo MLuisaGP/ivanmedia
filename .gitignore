@@ -1,7 +1,8 @@
 *.zip
 *.jpg
 /assets/fotos/
-/assets/imagenes/
+/assets/imagenes/*
+!/assets/imagenes/logos/
 /assets/videos/
 /MATERIAL PAGINA WEB/
 /assets/images/MATERIAL*

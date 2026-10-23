@@ -53,7 +53,7 @@ declare(strict_types=1);
               <?php
                 $webpHero = preg_replace('/\.(jpe?g|png)$/i', '.webp', $niche->heroImage);
                 $docRoot = dirname(__DIR__, 3);
-                if ($webpHero !== $niche->heroImage && file_exists($docRoot . '/' . ltrim($webpHero, '/'))):
+                if (!str_starts_with($niche->heroImage, 'http') && $webpHero !== $niche->heroImage && file_exists($docRoot . '/' . ltrim($webpHero, '/'))):
               ?>
                 <source srcset="<?= e($webpHero) ?>" type="image/webp">
               <?php endif; ?>
@@ -110,10 +110,9 @@ declare(strict_types=1);
                 ?>
                 <div class="pin-card pin-card--video reveal" data-type="video" data-format="<?= e($format) ?>">
                   <div class="pin-media-box">
-                    <video class="pin-video-player" playsinline autoplay muted loop controls preload="metadata">
+                    <?php $posterUrl = preg_replace('/\.(mp4|mov|webm)$/i', '.jpg', $item['src']); ?>
+                    <video class="pin-video-player" playsinline muted loop controls preload="none" poster="<?= e($posterUrl) ?>">
                       <source src="<?= e($item['src']) ?>" type="video/mp4">
-                      <source src="<?= e($item['src']) ?>" type="video/quicktime">
-                      <source src="<?= e($item['src']) ?>" type="video/webm">
                       Tu navegador no soporta reproducción directa de video.
                     </video>
                     <span class="pin-video-badge">
@@ -134,11 +133,15 @@ declare(strict_types=1);
                   $cardClasses = ['pin-card', 'pin-card--image', 'reveal'];
                   if ($aspect === 'horizontal') {
                       $cardClasses[] = 'pin-card--horizontal-crop';
+                  } elseif ($aspect === 'square') {
+                      $cardClasses[] = 'pin-card--square-crop';
+                  } elseif ($aspect === 'medium') {
+                      $cardClasses[] = 'pin-card--medium-crop';
                   }
                 ?>
                 <div class="<?= implode(' ', $cardClasses) ?>" data-image="<?= e($item['src']) ?>" data-title="<?= e($item['title'] ?? '') ?>" data-caption="<?= e($item['caption'] ?? '') ?>" data-aspect="<?= e($aspect) ?>">
                   <div class="pin-media-box">
-                    <img loading="lazy" src="<?= e($item['src']) ?>" alt="<?= e($item['title'] ?? $niche->name) ?>">
+                    <img loading="lazy" decoding="async" src="<?= e($item['src']) ?>" alt="<?= e($item['title'] ?? $niche->name) ?>">
                     
                     <!-- Overlay con título y descripción: visible solo en hover -->
                     <div class="pin-hover-overlay">

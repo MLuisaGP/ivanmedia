@@ -15,8 +15,7 @@ $niches = $allNiches ?? (new NicheRepository())->getAll();
       <!-- Columna 1: Marca y Propuesta -->
       <div class="footer-col footer-col--brand">
         <a class="brand brand--footer" href="/" aria-label="<?= e($site->name) ?>, inicio">
-          <span class="brand-mark">i<span>m</span></span>
-          <span><?= e($site->name) ?><small>Visual Studio</small></span>
+          <img src="/assets/imagenes/logos/ivan.Media.png" alt="<?= e($site->name) ?>" class="brand-logo brand-logo--footer" width="160" height="48">
         </a>
         <p class="footer-brand-desc">
           Dirección y creación de contenido audiovisual comercial en Hermosillo, Sonora. Fotografía de alto impacto, producción de reels y estrategia visual para marcas que quieren destacar.
@@ -78,16 +77,13 @@ $niches = $allNiches ?? (new NicheRepository())->getAll();
             <a href="<?= e($site->instagram) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Instagram de Ivan Media" title="Instagram">
               <?= icon('instagram') ?>
             </a>
-            <a href="https://tiktok.com/@ivanmedia" target="_blank" rel="noopener" class="footer-social-btn" aria-label="TikTok de Ivan Media" title="TikTok">
-              <?= icon('tiktok') ?>
+            <a href="<?= e($site->facebook) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Facebook de Ivan Media" title="Facebook">
+              <?= icon('facebook') ?>
             </a>
-            <a href="<?= e($site->whatsapp) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="WhatsApp de Ivan Media" title="WhatsApp">
-              <?= icon('whatsapp') ?>
+            <a href="<?= e($site->x) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="X de Ivan Media" title="X">
+              <?= icon('x') ?>
             </a>
-            <a href="https://youtube.com/@ivanmedia" target="_blank" rel="noopener" class="footer-social-btn" aria-label="YouTube de Ivan Media" title="YouTube">
-              <?= icon('youtube') ?>
-            </a>
-            <a href="https://linkedin.com/in/ivanmolina" target="_blank" rel="noopener" class="footer-social-btn" aria-label="LinkedIn de Ivan Media" title="LinkedIn">
+            <a href="<?= e($site->linkedin) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="LinkedIn de Ivan Media" title="LinkedIn">
               <?= icon('linkedin') ?>
             </a>
           </div>
@@ -104,10 +100,6 @@ $niches = $allNiches ?? (new NicheRepository())->getAll();
       <p class="footer-credits">
         Fotografía comercial & Producción audiovisual · Hermosillo, Son.
       </p>
-      <a href="#top" class="footer-back-top" aria-label="Volver al inicio de la página">
-        <span>Volver arriba</span>
-        <span class="back-top-arrow" aria-hidden="true"><?= icon('arrow-up') ?></span>
-      </a>
     </div>
   </div>
 </footer>

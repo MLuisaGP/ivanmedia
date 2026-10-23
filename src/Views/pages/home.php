@@ -13,8 +13,6 @@ use App\Core\View;
 
 <?= View::partial('partials/hero', ['site' => $site]) ?>
 
-<?= View::partial('partials/brand_strip') ?>
-
 <?= View::partial('partials/about_me') ?>
 
 <?= View::partial('partials/intro') ?>

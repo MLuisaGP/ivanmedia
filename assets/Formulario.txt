@@ -1,0 +1,42 @@
+Formulario
+
+- Nombre completo (obligatorio)
+- Nombre de tu negocio o marca (obligatorio)
+- correo electrónico (obligatorio)
+- numero de teléfono o whatsapp (obligatorio)
+
+==Todo sobre tu negocio==
+- describe brevemente a que se dedica tu negocio (obligatorio)
+- ubicación o zona de atención (opcional)
+- tiempo en el mercado (obligatorio) [menos de 1 año, 1 a 3 años, mas de 3 años]
+- Tienes pagina web o redes sociales (obligatorio[Si,  ambas.
+Solo redes Sociales.
+Solo página web.
+Ninguna de ellas.]
+
+==Objetivos
+-¿Qué te gustaría lograr en los próximos 3–6 meses?  (opcional) [opción multiple; Aumentar Ventas.
+Conseguir más clientes potenciales.
+Mejorar mi presencia en redes sociales.
+Posicionar mi marca en internet.
+Otro:
+-si pudieras elegir un resultado ideal en marketing,seria :(obligatorio)
+[Generar mas ventas
+Tener mas seguidores y aumentar mi comunidad.
+Posicionar mi marca o Reconocimiento.
+Mejorar mi imagen y presentacion de mi negocio.] opción multiple
+
+== clientes y competencias
+- Describe brevemente a tu cliente ideal.   (Edad, intereses, ubicación, etc.) (obligatorio)
+- Menciona 1 o 2 competidores o marcas que admires:  (onligatiorio)
+
+=Inversion y expectativas
+- ¿Con qué presupuesto mensual estimado cuentas para Creación de contenido?
+(obligatio)[
+Menos de $4,000 MXN
+Entre $4,000 y $8,000 MXN
+Más de $8,000 MXN
+No estoy seguro, necesito orientación.](una opción)
+-¿Qué esperas de una agencia de marketing para considerarla un aliado ideal?
+
+

@@ -17,13 +17,16 @@ declare(strict_types=1);
   <meta name="theme-color" content="#021B39">
   <meta name="description" content="<?= e($site->description) ?>">
   <title><?= isset($niche) ? e($niche->name) . ' — ' . e($site->name) : e($site->name) . ' — Contenido que se siente. Resultados que se notan.' ?></title>
+  <link rel="icon" type="image/png" href="/assets/imagenes/logos/logoIM.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/imagenes/logos/logoIM.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
-<body class="<?= isset($niche) ? 'page-niche' : 'page-home' ?>">
+<body id="top" class="<?= isset($niche) ? 'page-niche' : 'page-home' ?>">
   <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
 
   <?= \App\Core\View::partial('partials/header', ['site' => $site, 'niche' => $niche ?? null]) ?>

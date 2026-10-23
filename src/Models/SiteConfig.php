@@ -15,6 +15,9 @@ final class SiteConfig
         public readonly string $whatsapp = 'https://wa.me/526621234567',
         public readonly string $email = 'hola@ivanmedia.com',
         public readonly string $instagram = 'https://instagram.com/',
+        public readonly string $facebook = 'https://facebook.com/',
+        public readonly string $x = 'https://x.com/',
+        public readonly string $linkedin = 'https://linkedin.com/',
         public readonly string $location = 'Hermosillo, Sonora',
         public readonly string $description = 'Ivan Media: fotografía, video y contenido visual para marcas que quieren destacar.'
     ) {}

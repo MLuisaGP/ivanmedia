@@ -22,10 +22,16 @@
   const updateScroll = () => {
     const max = document.documentElement.scrollHeight - window.innerHeight;
     if (progress) progress.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
-    if (backTop) backTop.classList.toggle('is-visible', window.scrollY > 600);
+    if (backTop) backTop.classList.toggle('is-visible', window.scrollY > 300);
   };
   window.addEventListener('scroll', updateScroll, { passive: true });
   updateScroll();
+  if (backTop) {
+    backTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 
   const revealItems = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
