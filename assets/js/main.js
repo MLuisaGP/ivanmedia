@@ -50,17 +50,33 @@
     revealItems.forEach(item => item.classList.add('is-visible'));
   }
 
-  // Counter animation for statistics (Quién soy)
+  // Counter animation for statistics (Quién soy & Sección 07 Casos de éxito)
   const statCounters = document.querySelectorAll('.stat-counter');
   if (statCounters.length > 0) {
     const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    const setContent = (el, text) => {
+      if (text.includes('<')) {
+        el.innerHTML = text;
+      } else {
+        el.textContent = text;
+      }
+    };
+
     const animateCounter = (el) => {
-      const target = parseInt(el.dataset.target, 10);
+      const rawTarget = el.dataset.target;
+      if (!rawTarget) return;
+      const target = parseFloat(rawTarget);
       if (isNaN(target)) return;
       const prefix = el.dataset.prefix || '';
       const suffix = el.dataset.suffix || '';
-      const duration = 1600;
+      const hasDecimals = el.dataset.decimals !== undefined
+        ? parseInt(el.dataset.decimals, 10) > 0
+        : rawTarget.includes('.');
+      const decimals = hasDecimals
+        ? parseInt(el.dataset.decimals || (rawTarget.split('.')[1] || '').length || '1', 10)
+        : 0;
+      const duration = parseInt(el.dataset.duration || '1600', 10);
       let startTime = null;
 
       const updateCount = (timestamp) => {
@@ -69,14 +85,16 @@
         const progress = Math.min(elapsed / duration, 1);
         // Easing: easeOutCubic (starts briskly, smoothly decelerates to final number)
         const easeProgress = 1 - Math.pow(1 - progress, 3);
-        const current = Math.round(easeProgress * target);
+        const currentVal = easeProgress * target;
+        const currentFormatted = decimals > 0 ? currentVal.toFixed(decimals) : Math.round(currentVal);
 
-        el.textContent = `${prefix}${current}${suffix}`;
+        setContent(el, `${prefix}${currentFormatted}${suffix}`);
 
         if (progress < 1) {
           window.requestAnimationFrame(updateCount);
         } else {
-          el.textContent = `${prefix}${target}${suffix}`;
+          const finalFormatted = decimals > 0 ? target.toFixed(decimals) : target;
+          setContent(el, `${prefix}${finalFormatted}${suffix}`);
         }
       };
 
@@ -85,11 +103,19 @@
 
     if (!prefersReducedMotion) {
       if ('IntersectionObserver' in window) {
-        // Reset to 0 before scrolling into view so the counter starts from 0
+        // Reset to initial 0 before scrolling into view
         statCounters.forEach(counter => {
           const prefix = counter.dataset.prefix || '';
           const suffix = counter.dataset.suffix || '';
-          counter.textContent = `${prefix}0${suffix}`;
+          const rawTarget = counter.dataset.target || '';
+          const hasDecimals = counter.dataset.decimals !== undefined
+            ? parseInt(counter.dataset.decimals, 10) > 0
+            : rawTarget.includes('.');
+          const decimals = hasDecimals
+            ? parseInt(counter.dataset.decimals || (rawTarget.split('.')[1] || '').length || '1', 10)
+            : 0;
+          const initialVal = decimals > 0 ? (0).toFixed(decimals) : '0';
+          setContent(counter, `${prefix}${initialVal}${suffix}`);
         });
 
         const statsObserver = new IntersectionObserver((entries, observer) => {

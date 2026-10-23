@@ -82,22 +82,22 @@ $testimonials = [
     <!-- Barra de métricas de confianza -->
     <div class="testimonials-stats-bar reveal">
       <div class="testi-stat-item">
-        <strong class="testi-stat-number">+150</strong>
+        <strong class="testi-stat-number stat-counter" data-target="150" data-prefix="+">+150</strong>
         <span class="testi-stat-label">Producciones comerciales realizadas</span>
       </div>
       <div class="testi-stat-sep" aria-hidden="true"></div>
       <div class="testi-stat-item">
-        <strong class="testi-stat-number">98%</strong>
+        <strong class="testi-stat-number stat-counter" data-target="98" data-suffix="%">98%</strong>
         <span class="testi-stat-label">Tasa de satisfacción y recompra</span>
       </div>
       <div class="testi-stat-sep" aria-hidden="true"></div>
       <div class="testi-stat-item">
-        <strong class="testi-stat-number">4.9 ★</strong>
+        <strong class="testi-stat-number stat-counter" data-target="4.9" data-decimals="1" data-suffix=" ★">4.9 ★</strong>
         <span class="testi-stat-label">Calificación promedio de clientes</span>
       </div>
       <div class="testi-stat-sep" aria-hidden="true"></div>
       <div class="testi-stat-item">
-        <strong class="testi-stat-number">100%</strong>
+        <strong class="testi-stat-number stat-counter" data-target="100" data-suffix="%">100%</strong>
         <span class="testi-stat-label">Calidad 4K cinematográfica garantizada</span>
       </div>
     </div>
