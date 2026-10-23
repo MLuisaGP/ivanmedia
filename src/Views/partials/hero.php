@@ -14,10 +14,16 @@ declare(strict_types=1);
     <h1>Tu marca merece<br>ser <em>imposible <br>de ignorar.</em></h1>
     <div class="hero-bottom">
       <p>Ideas con intención. Imágenes con personalidad.<br>Contenido creado para hacer que tu marca se mueva.</p>
-      <a class="hero-scroll-btn" href="#about" aria-label="Conoce más">
-        <span>Conoce más</span>
-        <span class="scroll-arrow"><?= icon('arrow-down') ?></span>
-      </a>
+      <div class="hero-actions">
+        <button type="button" class="btn-quote" data-open-quote aria-haspopup="dialog">
+          <span>Realizar cotización</span>
+          <span class="btn-quote-icon" aria-hidden="true"><?= icon('arrow-up-right') ?></span>
+        </button>
+        <a class="hero-scroll-btn" href="#about" aria-label="Conoce más">
+          <span>Conoce más</span>
+          <span class="scroll-arrow" aria-hidden="true"><?= icon('arrow-down') ?></span>
+        </a>
+      </div>
     </div>
   </div>
   <div class="hero-art" aria-label="Collage de fotografía creativa">
