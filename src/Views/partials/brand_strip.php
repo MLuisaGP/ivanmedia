@@ -69,7 +69,7 @@ $brands = [
       <?php foreach ($brands as $brand): ?>
         <div class="brand-card reveal">
           <div class="brand-card-logo">
-            <img src="/assets/imagenes/logos/marcas/<?= e($brand['file']) ?>" 
+            <img src="/assets/images/logos/marcas/<?= e($brand['file']) ?>" 
                  alt="Logotipo de <?= e($brand['name']) ?>" 
                  style="max-height: <?= (int)$brand['height'] ?>px;" 
                  loading="lazy">

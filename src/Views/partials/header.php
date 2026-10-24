@@ -9,7 +9,7 @@ $isNiche = isset($niche) && $niche !== null;
 ?>
 <header class="site-header <?= $isNiche ? 'site-header--solid' : '' ?>" id="top">
   <a class="brand" href="/" aria-label="<?= e($site->name) ?>, inicio">
-    <img src="/assets/imagenes/logos/ivan.Media.png" alt="<?= e($site->name) ?>" class="brand-logo" width="220" height="51">
+    <img src="/assets/images/logos/ivan.Media.png" alt="<?= e($site->name) ?>" class="brand-logo" width="220" height="51">
   </a>
   <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menú">
     <span></span><span></span>

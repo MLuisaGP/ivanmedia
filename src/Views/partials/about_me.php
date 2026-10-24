@@ -37,7 +37,7 @@ declare(strict_types=1);
     </div>
     <div class="about-me-visual">
       <div class="bio-frame">
-        <img src="assets/imagenes/ivan-molina.png" alt="Iván Molina — Creación y dirección audiovisual" width="612" height="747" loading="lazy">
+        <img src="assets/images/ivan-molina.png" alt="Iván Molina — Creación y dirección audiovisual" width="612" height="747" loading="lazy">
         <div class="bio-card-tag">
           <span class="status-dot"></span>
           <span>Iván Molina · Dirección & Contenido</span>

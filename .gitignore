@@ -1,8 +1,8 @@
 *.zip
 *.jpg
 /assets/fotos/
-/assets/imagenes/*
-!/assets/imagenes/logos/
+/assets/images/*
+!/assets/images/logos/
 /assets/videos/
 /MATERIAL PAGINA WEB/
 /assets/images/MATERIAL*
@@ -10,3 +10,4 @@
 /storage/messages/*.jsonl
 .DS_Store
 /assets/multimedia/
+.env
