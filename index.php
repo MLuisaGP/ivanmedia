@@ -12,6 +12,10 @@ use Bramus\Router\Router;
 use App\Controllers\HomeController;
 use App\Controllers\NicheController;
 use App\Core\Response;
+use App\Core\Env;
+
+// Load environment configuration (.env)
+Env::load(__DIR__ . '/.env');
 
 // Initialize session if needed
 if (session_status() !== PHP_SESSION_ACTIVE) {

@@ -19,14 +19,14 @@ $isNiche = isset($niche) && $niche !== null;
       <?php if ($isNiche): ?>
         <a href="/"><span class="nav-num">01</span>Inicio</a>
         <a href="/#about"><span class="nav-num">02</span>Quién soy</a>
-        <a href="/#work"><span class="nav-num">03</span>Sectores</a>
-        <a href="#galeria"><span class="nav-num">04</span>Galería</a>
-        <a href="#servicios"><span class="nav-num">05</span>Servicios</a>
+        <a href="/#services"><span class="nav-num">03</span>Servicios</a>
+        <a href="/#work"><span class="nav-num">04</span>Sectores</a>
+        <a href="#galeria"><span class="nav-num">05</span>Galería</a>
         <a href="/#contact"><span class="nav-num">06</span>Contacto</a>
       <?php else: ?>
         <a href="#about"><span class="nav-num">01</span>Quién soy</a>
-        <a href="#work"><span class="nav-num">02</span>Sectores</a>
-        <a href="#services"><span class="nav-num">03</span>Servicios</a>
+        <a href="#services"><span class="nav-num">02</span>Servicios</a>
+        <a href="#work"><span class="nav-num">03</span>Sectores</a>
         <a href="#contact"><span class="nav-num">04</span>Contacto</a>
       <?php endif; ?>
     </div>

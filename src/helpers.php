@@ -3,6 +3,30 @@ declare(strict_types=1);
 
 use App\Core\IconHelper;
 use App\Core\Csrf;
+use App\Core\Env;
+use App\Models\SiteConfig;
+
+if (!function_exists('env')) {
+    /**
+     * Get an environment variable value with an optional default.
+     */
+    function env(string $key, mixed $default = null): mixed {
+        return Env::get($key, $default);
+    }
+}
+
+if (!function_exists('site')) {
+    /**
+     * Get site configuration loaded from environment.
+     */
+    function site(): SiteConfig {
+        static $instance = null;
+        if ($instance === null) {
+            $instance = new SiteConfig();
+        }
+        return $instance;
+    }
+}
 
 if (!function_exists('e')) {
     /**

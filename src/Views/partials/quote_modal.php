@@ -4,7 +4,7 @@ declare(strict_types=1);
 /**
  * @var \App\Models\SiteConfig|null $site
  */
-$whatsappUrl = isset($site) && !empty($site->whatsapp) ? $site->whatsapp : 'https://wa.me/526621234567';
+$whatsappUrl = isset($site) && !empty($site->whatsapp) ? $site->whatsapp : (function_exists('site') ? site()->whatsapp : 'https://wa.me/526623422103');
 ?>
 <dialog class="quote-modal" id="quoteModal" aria-labelledby="quoteModalTitle">
   <div class="quote-modal-card">

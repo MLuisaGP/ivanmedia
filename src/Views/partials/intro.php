@@ -2,7 +2,7 @@
 declare(strict_types=1);
 ?>
 <section class="intro section-light reveal" id="philosophy">
-  <div class="section-label"><span>02</span> / La idea detrás de la imagen</div>
+  <div class="section-label"><span>03</span> / La idea detrás de la imagen</div>
   <div class="intro-layout">
     <h2>No hacemos contenido<br>por hacer. <span>Contamos<br>historias que conectan.</span></h2>
     <div class="intro-copy">

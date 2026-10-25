@@ -32,8 +32,8 @@ $niches = $allNiches ?? (new NicheRepository())->getAll();
         <ul class="footer-links">
           <li><a href="/">Inicio</a></li>
           <li><a href="/#about">Quién soy</a></li>
-          <li><a href="/#work">Sectores especializados</a></li>
           <li><a href="/#services">Servicios audiovisuales</a></li>
+          <li><a href="/#work">Sectores especializados</a></li>
           <li><a href="/#pricing">Paquetes de contenido</a></li>
           <li><a href="/#contact">Contacto directo</a></li>
         </ul>
@@ -55,7 +55,7 @@ $niches = $allNiches ?? (new NicheRepository())->getAll();
         <ul class="footer-contact-list">
           <li>
             <span class="footer-contact-icon" aria-hidden="true"><?= icon('map-pin') ?></span>
-            <span>Hermosillo, Sonora, México</span>
+            <span><?= e($site->location) ?></span>
           </li>
           <li>
             <span class="footer-contact-icon" aria-hidden="true"><?= icon('mail') ?></span>
@@ -63,29 +63,37 @@ $niches = $allNiches ?? (new NicheRepository())->getAll();
           </li>
           <li>
             <span class="footer-contact-icon" aria-hidden="true"><?= icon('phone') ?></span>
-            <a href="<?= e($site->whatsapp) ?>" target="_blank" rel="noopener">+52 (662) 123-4567</a>
+            <a href="<?= e($site->whatsapp) ?>" target="_blank" rel="noopener"><?= e($site->phoneFormatted) ?></a>
           </li>
           <li class="footer-schedule">
             <span class="footer-contact-icon" aria-hidden="true"><?= icon('sparkle') ?></span>
-            <span>Lunes a Sábado · 9:00 AM – 7:00 PM</span>
+            <span><?= e($site->schedule) ?></span>
           </li>
         </ul>
 
         <div class="footer-socials">
           <span class="footer-socials-label">Síguenos en redes:</span>
           <div class="footer-social-icons">
-            <a href="<?= e($site->instagram) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Instagram de Ivan Media" title="Instagram">
+            <?php if (!empty($site->instagram)): ?>
+            <a href="<?= e($site->instagram) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Instagram de <?= e($site->name) ?>" title="Instagram">
               <?= icon('instagram') ?>
             </a>
-            <a href="<?= e($site->facebook) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Facebook de Ivan Media" title="Facebook">
+            <?php endif; ?>
+            <?php if (!empty($site->facebook)): ?>
+            <a href="<?= e($site->facebook) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Facebook de <?= e($site->name) ?>" title="Facebook">
               <?= icon('facebook') ?>
             </a>
-            <a href="<?= e($site->x) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="X de Ivan Media" title="X">
+            <?php endif; ?>
+            <?php if (!empty($site->x)): ?>
+            <a href="<?= e($site->x) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="X de <?= e($site->name) ?>" title="X">
               <?= icon('x') ?>
             </a>
-            <a href="<?= e($site->linkedin) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="LinkedIn de Ivan Media" title="LinkedIn">
+            <?php endif; ?>
+            <?php if (!empty($site->linkedin)): ?>
+            <a href="<?= e($site->linkedin) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="LinkedIn de <?= e($site->name) ?>" title="LinkedIn">
               <?= icon('linkedin') ?>
             </a>
+            <?php endif; ?>
           </div>
         </div>
       </div>

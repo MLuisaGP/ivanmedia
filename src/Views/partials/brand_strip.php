@@ -12,16 +12,16 @@ $brands = [
         'height' => 42,
     ],
     [
-        'name' => 'Pausa Café',
-        'sector' => 'Cafetería de Especialidad',
-        'file' => 'pausa-cafe-dark.png',
-        'height' => 36,
+        'name' => 'Modeloz',
+        'sector' => 'Boutique & Calzado',
+        'file' => 'modeloz-clean.png',
+        'height' => 44,
     ],
     [
-        'name' => 'Phocas Mariscos',
-        'sector' => 'Gastronomía de Mar',
-        'file' => 'phocas-mariscos.png',
-        'height' => 50,
+        'name' => 'Skin Care',
+        'sector' => 'Dermatología & Estética',
+        'file' => 'skincare-clean.png',
+        'height' => 46,
     ],
     [
         'name' => 'Runfit Studio',
@@ -58,7 +58,7 @@ $brands = [
 <section class="brands-section" id="marcas" aria-label="Marcas que confían en nosotros">
   <div class="container">
     <div class="brands-header reveal">
-      <div class="section-label"><span>08</span> / Confianza y trayectoria</div>
+      <div class="section-label"><span>02</span> / Confianza y trayectoria</div>
       <h2 class="brands-title">Marcas que ya <em>confían en nosotros.</em></h2>
       <p class="brands-subtitle">
         Proyectos, comercios y marcas locales y regionales que han impulsado su presencia y ventas a través de nuestra producción audiovisual.

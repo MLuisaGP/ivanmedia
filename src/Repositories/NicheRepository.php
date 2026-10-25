@@ -53,7 +53,7 @@ class NicheRepository
                 badge: 'Gastronomía',
                 tagline: 'Fotografía y video gastronómico que despiertan el apetito y llenan mesas.',
                 description: 'Creamos contenido comercial especializado para restaurantes, taquerías gourmet, parrillas y conceptos gastronómicos en Hermosillo. Resaltamos la textura crujiente de las costras, el humo de las brasas, cortes selectos y coctelería de autor mediante tomas macro de alta definición y reels verticales de ritmo dinámico diseñados para despertar el antojo y generar reservaciones.',
-                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_800/v1792719591/home/ivan%20portafolio/10-DSC05274.jpg',
+                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_800/home/ivan%20portafolio/7-DSC05249.jpg',
                 services: [
                     'Fotografía macro de platillos insignia y estilismo culinario en mesa',
                     'Reels verticales de preparación, fuego en asador y vertido de salsas',
@@ -208,7 +208,7 @@ class NicheRepository
                 badge: 'Cafetería',
                 tagline: 'Estética acogedora, rituales de barista y momentos que invitan a regresar.',
                 description: 'Capturamos la atmósfera, calidez y cultura detrás de cada taza. Desde el vertido perfecto de un latte art y la preparación minuciosa de matcha hasta los rincones estéticos donde tus clientes se inspiran a trabajar, leer o platicar. Diseñamos un lenguaje visual coherente que convierte tu cafetería en el punto de encuentro predilecto.',
-                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_800/v1792721484/home/ivan%20portafolio/12-DSC00398.jpg',
+                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_800/v1792721478/home/ivan%20portafolio/1-DSC00569.jpg',
                 services: [
                     'Tomas de detalle de extracción de espresso, emulsión y latte art',
                     'Rituales de matcha, bebidas frías de especialidad y mocktails',
@@ -358,7 +358,7 @@ class NicheRepository
                 badge: 'Fitness & Deporte',
                 tagline: 'Intensidad, fuerza y disciplina transmitidas con cinematografía de alto impacto.',
                 description: 'El contenido fitness demanda energía pura, determinación y autenticidad sin poses falsas. Producimos contenido para gimnasios de fuerza, centros de acondicionamiento físico, clubes de pádel, marcas de ropa deportiva y coaches con tomas en cámara lenta, contrastes marcados y ritmos acelerados que motivan e impulsan la venta de membresías.',
-                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_800/v1792724419/home/ivan%20portafolio/36-DSC02235.jpg',
+                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_800/v1792724399/home/ivan%20portafolio/34-DSC02408.jpg',
                 services: [
                     'Grabación en cámara lenta cinemática y planos en movimiento dinámico',
                     'Retratos de atletas, entrenadores y embajadores con iluminación dramática',
@@ -522,7 +522,7 @@ class NicheRepository
                 badge: 'Cuidado de la piel',
                 tagline: 'Pureza, delicadeza y bienestar que transmiten confianza clínica inmediata.',
                 description: 'En el sector dermocosmético, cosmetología y estética médica, la pulcritud visual y la delicadeza son determinantes. Desarrollamos producciones que documentan protocolos faciales, aparatología de vanguardia y resultados con iluminación blanca y suave, proyectando el rigor profesional y la calidez que los pacientes buscan.',
-                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_800/v1792726776/home/ivan%20portafolio/20-DSC02400.jpg',
+                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_800/home/ivan%20portafolio/8-DSC02482.jpg',
                 services: [
                     'Documentación detallada de protocolos faciales y tratamientos de cabina',
                     'Tomas macro de texturas cosméticas, sueros, gotas y aplicación suave',
@@ -677,7 +677,7 @@ class NicheRepository
                 badge: 'Corporativo & Legal',
                 tagline: 'Autoridad, reputación e imagen ejecutiva que genera certidumbre inmediata.',
                 description: 'En el sector legal, arbitraje y consultoría corporativa, la credibilidad visual y la solemnidad determinan la confianza de inversionistas y clientes de alto perfil. Producimos retratos editoriales con iluminación envolvente de estudio, dirección de postura ejecutiva en salas de juntas y cápsulas de video con rigor jurídico que posicionan a despachos y socios como referentes indiscutibles en su materia.',
-                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_800/v1792730847/home/ivan%20portafolio/abogados_6-_DSC1717.jpg',
+                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_800/v1792730830/home/ivan%20portafolio/abogados_2-DSC00016.jpg',
                 services: [
                     'Retratos ejecutivos individuales y de equipo para socios, asociados y directores',
                     'Fotografía de arquitectura corporativa: despachos privados, salas de juntas y lobbies',
@@ -832,7 +832,7 @@ class NicheRepository
                 badge: 'Negocio General',
                 tagline: 'Impulso comercial y posicionamiento para marcas locales con visión de crecimiento.',
                 description: 'Impulsamos el valor percibido de marcas locales, boutiques, productos de consumo, retail y espacios comerciales de Hermosillo. Desarrollamos producciones visuales de estándar internacional que combinan fotografía editorial en locación, producto en estudio controlado y reels comerciales de alto impacto que profesionalizan tu presencia digital y aceleran las ventas.',
-                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_800/v1792731787/home/ivan%20portafolio/negocio_golden-hour-padel.jpg',
+                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_800/home/ivan%20portafolio/DSC01791.jpg',
                 services: [
                     'Fotografía comercial de catálogo, e-commerce, calzado y moda urbana',
                     'Campañas editoriales en locación con modelos, styling y producto puesto',

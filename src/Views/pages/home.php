@@ -15,18 +15,18 @@ use App\Core\View;
 
 <?= View::partial('partials/about_me') ?>
 
+<?= View::partial('partials/brand_strip') ?>
+
 <?= View::partial('partials/intro') ?>
 
-<?= View::partial('partials/work', ['niches' => $niches, 'projects' => $projects]) ?>
-
 <?= View::partial('partials/services') ?>
+
+<?= View::partial('partials/work', ['niches' => $niches, 'projects' => $projects]) ?>
 
 <?= View::partial('partials/results', ['site' => $site]) ?>
 
 <?= View::partial('partials/pricing', ['site' => $site]) ?>
 
 <?= View::partial('partials/testimonials', ['site' => $site]) ?>
-
-<?= View::partial('partials/brand_strip') ?>
 
 <?= View::partial('partials/contact', ['site' => $site]) ?>

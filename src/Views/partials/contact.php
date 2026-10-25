@@ -7,7 +7,7 @@ declare(strict_types=1);
 ?>
 <section class="contact-section section-blue" id="contact">
   <div class="contact-orbit" aria-hidden="true"></div>
-  <div class="section-label"><span>08</span> / El siguiente paso es tuyo</div>
+  <div class="section-label"><span>09</span> / El siguiente paso es tuyo</div>
 
   <div class="contact-content">
     <p class="eyebrow"><span class="status-dot"></span>¿Tienes una idea en mente?</p>

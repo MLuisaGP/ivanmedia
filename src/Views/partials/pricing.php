@@ -7,7 +7,7 @@ declare(strict_types=1);
 ?>
 <section class="package-section">
   <div class="package-heading">
-    <div class="section-label"><span>06</span> / Empieza con lo esencial</div>
+    <div class="section-label"><span>07</span> / Empieza con lo esencial</div>
     <span class="package-badge">Favorito de la comunidad</span>
   </div>
   <div class="package-card">
