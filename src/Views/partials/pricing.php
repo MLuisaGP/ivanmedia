@@ -5,7 +5,7 @@ declare(strict_types=1);
  * @var \App\Models\SiteConfig $site
  */
 ?>
-<section class="package-section">
+<section class="package-section" id="pricing">
   <div class="package-heading">
     <div class="section-label"><span>07</span> / Empieza con lo esencial</div>
     <span class="package-badge">Favorito de la comunidad</span>
@@ -27,10 +27,34 @@ declare(strict_types=1);
       <div class="package-includes">
         <span>Qué podemos incluir</span>
         <ul>
-          <li><b>01</b> Sesión de fotografía</li>
-          <li><b>02</b> Videos verticales / reels</li>
-          <li><b>03</b> Edición y retoque</li>
-          <li><b>04</b> Entrega optimizada para redes</li>
+          <li>
+            <b>01</b>
+            <div class="package-item-text">
+              <strong>Sesión de fotografía</strong>
+              <span>Tomas de producto, espacio, equipo y marca</span>
+            </div>
+          </li>
+          <li>
+            <b>02</b>
+            <div class="package-item-text">
+              <strong>Videos verticales / reels</strong>
+              <span>Formato vertical con ritmo, gancho y narrativa comercial</span>
+            </div>
+          </li>
+          <li>
+            <b>03</b>
+            <div class="package-item-text">
+              <strong>Edición y retoque</strong>
+              <span>Gradación de color, audio dinámico y acabado profesional</span>
+            </div>
+          </li>
+          <li>
+            <b>04</b>
+            <div class="package-item-text">
+              <strong>Entrega optimizada para redes</strong>
+              <span>Archivos listos en alta resolución para Instagram y TikTok</span>
+            </div>
+          </li>
         </ul>
       </div>
       <p class="package-disclaimer">El contenido, la cantidad de entregables y la inversión se definen según las necesidades de cada proyecto.</p>
