@@ -53,7 +53,7 @@ class NicheRepository
                 badge: 'Gastronomía',
                 tagline: 'Fotografía y video gastronómico que despiertan el apetito y llenan mesas.',
                 description: 'Creamos contenido comercial especializado para restaurantes, taquerías gourmet, parrillas y conceptos gastronómicos en Hermosillo. Resaltamos la textura crujiente de las costras, el humo de las brasas, cortes selectos y coctelería de autor mediante tomas macro de alta definición y reels verticales de ritmo dinámico diseñados para despertar el antojo y generar reservaciones.',
-                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_800/home/ivan%20portafolio/7-DSC05249.jpg',
+                coverImage: '/assets/images/sectores/restaurante.webp',
                 services: [
                     'Fotografía macro de platillos insignia y estilismo culinario en mesa',
                     'Reels verticales de preparación, fuego en asador y vertido de salsas',
@@ -522,7 +522,7 @@ class NicheRepository
                 badge: 'Cuidado de la piel',
                 tagline: 'Pureza, delicadeza y bienestar que transmiten confianza clínica inmediata.',
                 description: 'En el sector dermocosmético, cosmetología y estética médica, la pulcritud visual y la delicadeza son determinantes. Desarrollamos producciones que documentan protocolos faciales, aparatología de vanguardia y resultados con iluminación blanca y suave, proyectando el rigor profesional y la calidez que los pacientes buscan.',
-                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_800/home/ivan%20portafolio/8-DSC02482.jpg',
+                coverImage: '/assets/images/sectores/cuidado-de-la-piel.webp',
                 services: [
                     'Documentación detallada de protocolos faciales y tratamientos de cabina',
                     'Tomas macro de texturas cosméticas, sueros, gotas y aplicación suave',
@@ -832,7 +832,7 @@ class NicheRepository
                 badge: 'Negocio General',
                 tagline: 'Impulso comercial y posicionamiento para marcas locales con visión de crecimiento.',
                 description: 'Impulsamos el valor percibido de marcas locales, boutiques, productos de consumo, retail y espacios comerciales de Hermosillo. Desarrollamos producciones visuales de estándar internacional que combinan fotografía editorial en locación, producto en estudio controlado y reels comerciales de alto impacto que profesionalizan tu presencia digital y aceleran las ventas.',
-                coverImage: 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_800/home/ivan%20portafolio/DSC01791.jpg',
+                coverImage: '/assets/images/sectores/negocio-general.webp',
                 services: [
                     'Fotografía comercial de catálogo, e-commerce, calzado y moda urbana',
                     'Campañas editoriales en locación con modelos, styling y producto puesto',

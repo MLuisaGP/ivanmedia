@@ -196,7 +196,7 @@ declare(strict_types=1);
           <?php if ($otherSlug !== $niche->id): ?>
           <a href="<?= e($otherNiche->url()) ?>" class="other-sector-card reveal">
             <span class="other-sector-img">
-              <img loading="lazy" src="<?= e($otherNiche->coverImage) ?>" alt="<?= e($otherNiche->name) ?>">
+              <img loading="lazy" src="<?= e($otherNiche->coverImage) ?>" alt="<?= e($otherNiche->name) ?>" onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='/assets/images/sectores/<?= e($otherNiche->id) ?>.webp';}">
             </span>
             <div class="other-sector-body">
               <span class="other-sector-badge"><?= e($otherNiche->badge) ?></span>
