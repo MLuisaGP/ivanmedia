@@ -9,6 +9,10 @@
 /assets/images/MATERIAL*
 /vendor/
 /storage/messages/*.jsonl
+/storage/quotes/*
+!/storage/quotes/.gitkeep
+/storage/logs/*
+!/storage/logs/.gitkeep
 .DS_Store
 /assets/multimedia/
 .env

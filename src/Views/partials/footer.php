@@ -79,19 +79,14 @@ $niches = $allNiches ?? (new NicheRepository())->getAll();
               <?= icon('instagram') ?>
             </a>
             <?php endif; ?>
-            <?php if (!empty($site->facebook)): ?>
-            <a href="<?= e($site->facebook) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Facebook de <?= e($site->name) ?>" title="Facebook">
-              <?= icon('facebook') ?>
+            <?php if (!empty($site->whatsapp)): ?>
+            <a href="<?= e($site->whatsapp) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="WhatsApp de <?= e($site->name) ?>" title="WhatsApp">
+              <?= icon('whatsapp') ?>
             </a>
             <?php endif; ?>
-            <?php if (!empty($site->x)): ?>
-            <a href="<?= e($site->x) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="X de <?= e($site->name) ?>" title="X">
-              <?= icon('x') ?>
-            </a>
-            <?php endif; ?>
-            <?php if (!empty($site->linkedin)): ?>
-            <a href="<?= e($site->linkedin) ?>" target="_blank" rel="noopener" class="footer-social-btn" aria-label="LinkedIn de <?= e($site->name) ?>" title="LinkedIn">
-              <?= icon('linkedin') ?>
+            <?php if (!empty($site->email)): ?>
+            <a href="mailto:<?= e($site->email) ?>" class="footer-social-btn" aria-label="Enviar correo a <?= e($site->name) ?>" title="Correo electrónico">
+              <?= icon('mail') ?>
             </a>
             <?php endif; ?>
           </div>
@@ -103,7 +98,7 @@ $niches = $allNiches ?? (new NicheRepository())->getAll();
   <div class="footer-bottom">
     <div class="container footer-bottom-inner">
       <p class="footer-copy">
-        © <?= date('Y') ?> <?= e($site->name) ?> Visual Studio · Todos los derechos reservados.
+        © <?= date('Y') ?> <?= e($site->name) ?> · Todos los derechos reservados.
       </p>
       <p class="footer-credits">
         Fotografía comercial & Producción audiovisual · Hermosillo, Son.

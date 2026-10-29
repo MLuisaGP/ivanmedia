@@ -23,11 +23,11 @@ class Env
     {
         $filePath = $path ?? dirname(__DIR__, 2) . '/.env';
 
-        if (!is_file($filePath) || !is_readable($filePath)) {
+        if (!is_file($filePath)) {
             return false;
         }
 
-        $lines = file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $lines = @file($filePath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         if ($lines === false) {
             return false;
         }

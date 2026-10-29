@@ -404,7 +404,7 @@ $whatsappUrl = isset($site) && !empty($site->whatsapp) ? $site->whatsapp : (func
         <button type="button" class="btn-quote-close-success" id="btnSuccessClose">
           <span>Volver al sitio</span>
         </button>
-        <a href="<?= e($whatsappUrl) ?>" target="_blank" rel="noopener" class="btn-quote-whatsapp-success">
+        <a href="<?= e($whatsappUrl) ?>" target="_blank" rel="noopener" class="btn-quote-whatsapp-success" id="btnQuoteWhatsapp">
           <span>Platicar también por WhatsApp</span>
           <span class="btn-icon"><?= icon('arrow-up-right') ?></span>
         </a>
