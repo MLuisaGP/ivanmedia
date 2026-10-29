@@ -552,6 +552,86 @@
     }
   }
 
+  // Copiar correo al portapapeles con feedback visual en enlaces mailto:
+  let copyToastTimeout;
+  const showCopyToast = (email) => {
+    let toast = document.querySelector('#copyToast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'copyToast';
+      toast.className = 'copy-toast';
+      toast.setAttribute('role', 'status');
+      toast.setAttribute('aria-live', 'polite');
+      document.body.appendChild(toast);
+    }
+
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
+
+    toast.innerHTML = `
+      <div class="copy-toast-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <div class="copy-toast-content">
+        <strong>¡Correo copiado al portapapeles!</strong>
+        <span>${email}</span>
+      </div>
+      <a href="${gmailUrl}" target="_blank" rel="noopener" class="copy-toast-action" title="Redactar en Gmail">
+        Abrir Gmail
+        <svg viewBox="0 0 24 24" fill="currentColor" width="11" height="11" aria-hidden="true">
+          <path d="M17.586 5H9a1 1 0 0 0 0 2h6.172L4.086 18.086a1 1 0 1 0 1.414 1.414L16.586 8.414V15a1 1 0 0 0 2 0V6.414A1.414 1.414 0 0 0 17.586 5z"/>
+        </svg>
+      </a>
+    `;
+
+    toast.classList.remove('is-active');
+    void toast.offsetWidth;
+    toast.classList.add('is-active');
+
+    clearTimeout(copyToastTimeout);
+    copyToastTimeout = setTimeout(() => {
+      toast.classList.remove('is-active');
+    }, 4000);
+  };
+
+  const copyEmailToClipboard = async (text) => {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch (_) {}
+
+    try {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      textArea.style.top = '-9999px';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      const success = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      return success;
+    } catch (_) {
+      return false;
+    }
+  };
+
+  document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const href = link.getAttribute('href');
+      const email = href.replace(/^mailto:/i, '').split('?')[0].trim();
+      if (!email) return;
+
+      copyEmailToClipboard(email);
+      showCopyToast(email);
+    });
+  });
+
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
       closeModal();
