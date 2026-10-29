@@ -210,6 +210,8 @@
 
   const openQuoteModal = () => {
     if (!quoteModal) return;
+    const modalHeader = quoteModal.querySelector('.quote-modal-header');
+    if (modalHeader) modalHeader.style.display = 'block';
     if (typeof quoteModal.showModal === 'function') {
       quoteModal.showModal();
     } else {
@@ -223,6 +225,8 @@
 
   const closeQuoteModal = () => {
     if (!quoteModal) return;
+    const modalHeader = quoteModal.querySelector('.quote-modal-header');
+    if (modalHeader) modalHeader.style.display = 'block';
     if (quoteModal.open) {
       if (typeof quoteModal.close === 'function') {
         quoteModal.close();
@@ -429,47 +433,160 @@
     }[tag] || tag));
   };
 
-  quoteForm?.addEventListener('submit', (e) => {
+  quoteForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!validateQuoteStep(5)) return;
 
     const submitBtn = quoteForm.querySelector('#btnSubmitQuote');
+    const originalBtnText = submitBtn ? submitBtn.innerHTML : '<span>Enviar solicitud de cotización</span>';
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>Procesando solicitud...</span>';
+      submitBtn.innerHTML = '<span>Generando expediente PDF y enviando...</span>';
     }
 
     const formData = new FormData(quoteForm);
+    const nombre = (formData.get('nombre') || '').toString();
+    const marca = (formData.get('marca') || '').toString();
+    const email = (formData.get('email') || '').toString();
+    const tel = (formData.get('telefono') || '').toString();
+    const presupuesto = (formData.get('presupuesto') || '').toString();
 
-    if (quoteSummaryCard) {
-      const nombre = (formData.get('nombre') || '').toString();
-      const marca = (formData.get('marca') || '').toString();
-      const email = (formData.get('email') || '').toString();
-      const tel = (formData.get('telefono') || '').toString();
-      const presupuesto = (formData.get('presupuesto') || '').toString();
+    try {
+      const response = await fetch('/api/cotizar', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-Requested-With': 'XMLHttpRequest'
+        }
+      });
 
-      quoteSummaryCard.innerHTML = `
-        <div class="summary-row"><span>Solicitante:</span> <strong>${escapeHtml(nombre)}</strong></div>
-        <div class="summary-row"><span>Marca / Negocio:</span> <strong>${escapeHtml(marca)}</strong></div>
-        <div class="summary-row"><span>Correo:</span> <strong>${escapeHtml(email)}</strong></div>
-        <div class="summary-row"><span>WhatsApp / Tel:</span> <strong>${escapeHtml(tel)}</strong></div>
-        <div class="summary-row"><span>Presupuesto estimado:</span> <strong>${escapeHtml(presupuesto)}</strong></div>
-      `;
-    }
+      const result = await response.json().catch(() => null);
 
-    setTimeout(() => {
+      if (response.ok && result && result.success) {
+        if (quoteSummaryCard) {
+          const folio = result.folio || 'Registrado';
+          const emailSent = !!result.emailSent;
+          const statusHtml = emailSent
+            ? '<span class="status-pill status-pill-success">✓ PDF generado y enviado a tu correo</span>'
+            : '<span class="status-pill status-pill-info">📋 Folio registrado y expediente PDF archivado en servidor</span>';
+
+          quoteSummaryCard.innerHTML = `
+            <div class="summary-row">
+              <span class="summary-label">Folio Oficial:</span>
+              <span class="summary-val summary-folio-val">${escapeHtml(folio)}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Solicitante:</span>
+              <span class="summary-val">${escapeHtml(nombre)}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Marca o Negocio:</span>
+              <span class="summary-val">${escapeHtml(marca)}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Correo:</span>
+              <span class="summary-val">${escapeHtml(email)}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">WhatsApp / Tel:</span>
+              <span class="summary-val">${escapeHtml(tel)}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Presupuesto estimado:</span>
+              <span class="summary-val">${escapeHtml(presupuesto)}</span>
+            </div>
+            <div class="summary-row summary-status-row">
+              <span class="summary-label">Estado:</span>
+              <span class="summary-val">${statusHtml}</span>
+            </div>
+          `;
+        }
+
+        const modalHeader = quoteModal.querySelector('.quote-modal-header');
+        if (modalHeader) modalHeader.style.display = 'none';
+
+        // Preload WhatsApp message with all lead details & PDF link
+        const btnWhatsapp = quoteSuccessView?.querySelector('#btnQuoteWhatsapp');
+        if (btnWhatsapp) {
+          const waNumber = '526623422103';
+          const originUrl = window.location.origin;
+          const pdfUrl = result.pdfFile ? `${originUrl}/cotizacion/descargar/${encodeURIComponent(result.pdfFile)}` : '';
+
+          let waMsg = `¡Hola Iván! 👋 Acabo de enviar mi solicitud de cotización en tu página web.\n\n` +
+            `📋 *Folio:* ${folio}\n` +
+            `👤 *Nombre:* ${nombre}\n` +
+            `🏢 *Marca:* ${marca}\n` +
+            `💰 *Presupuesto:* ${presupuesto}\n`;
+
+          if (pdfUrl) {
+            waMsg += `📄 *Expediente en PDF:* ${pdfUrl}\n`;
+          }
+          waMsg += `\nMe gustaría platicar contigo para revisar mi proyecto. ¡Muchas gracias!`;
+
+          btnWhatsapp.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMsg)}`;
+        }
+
+        if (quoteForm) quoteForm.style.display = 'none';
+        if (quoteSuccessView) quoteSuccessView.style.display = 'block';
+      } else {
+        const errorMsg = (result && result.message) ? result.message : 'Ocurrió un error al procesar tu solicitud.';
+        alert(errorMsg);
+      }
+    } catch (err) {
+      console.warn('Network notice during quote submission:', err);
+      if (quoteSummaryCard) {
+        quoteSummaryCard.innerHTML = `
+          <div class="summary-row">
+            <span class="summary-label">Solicitante:</span>
+            <span class="summary-val">${escapeHtml(nombre)}</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Marca / Negocio:</span>
+            <span class="summary-val">${escapeHtml(marca)}</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Correo:</span>
+            <span class="summary-val">${escapeHtml(email)}</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">WhatsApp / Tel:</span>
+            <span class="summary-val">${escapeHtml(tel)}</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Presupuesto:</span>
+            <span class="summary-val">${escapeHtml(presupuesto)}</span>
+          </div>
+        `;
+      }
+      const modalHeader = quoteModal.querySelector('.quote-modal-header');
+      if (modalHeader) modalHeader.style.display = 'none';
+
+      const btnWhatsapp = quoteSuccessView?.querySelector('#btnQuoteWhatsapp');
+      if (btnWhatsapp) {
+        const waNumber = '526623422103';
+        const waMsg = `¡Hola Iván! 👋 Llené el formulario de cotización en tu página web.\n\n` +
+          `👤 *Nombre:* ${nombre}\n` +
+          `🏢 *Marca:* ${marca}\n` +
+          `💰 *Presupuesto:* ${presupuesto}\n\n` +
+          `Me gustaría platicar contigo para conocer más detalles sobre mi proyecto. ¡Saludos!`;
+        btnWhatsapp.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(waMsg)}`;
+      }
+
       if (quoteForm) quoteForm.style.display = 'none';
       if (quoteSuccessView) quoteSuccessView.style.display = 'block';
+    } finally {
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = '<span>Enviar solicitud de cotización</span>';
+        submitBtn.innerHTML = originalBtnText;
       }
-    }, 400);
+    }
   });
 
   btnSuccessClose?.addEventListener('click', () => {
     closeQuoteModal();
     setTimeout(() => {
+      const modalHeader = quoteModal.querySelector('.quote-modal-header');
+      if (modalHeader) modalHeader.style.display = 'block';
       quoteForm?.reset();
       goToQuoteStep(1);
       if (quoteOtherField) quoteOtherField.style.display = 'none';

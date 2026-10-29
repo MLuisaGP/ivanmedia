@@ -98,7 +98,7 @@ $niches = $allNiches ?? (new NicheRepository())->getAll();
   <div class="footer-bottom">
     <div class="container footer-bottom-inner">
       <p class="footer-copy">
-        © <?= date('Y') ?> <?= e($site->name) ?> Visual Studio · Todos los derechos reservados.
+        © <?= date('Y') ?> <?= e($site->name) ?> · Todos los derechos reservados.
       </p>
       <p class="footer-credits">
         Fotografía comercial & Producción audiovisual · Hermosillo, Son.

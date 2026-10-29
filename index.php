@@ -39,6 +39,19 @@ $router->get('/contacto', static function (): void {
     Response::redirect('/#contact', 301);
 });
 
+// Route: Submit quote inquiry (Generates PDF brief and sends SMTP email)
+$router->post('/api/cotizar', static function (): void {
+    (new \App\Controllers\QuoteController())->submit();
+});
+$router->post('/cotizar', static function (): void {
+    (new \App\Controllers\QuoteController())->submit();
+});
+
+// Route: View or download generated quote PDF dossier
+$router->get('/cotizacion/descargar/([a-zA-Z0-9_\-\.]+)', static function (string $file): void {
+    (new \App\Controllers\QuoteController())->download($file);
+});
+
 // Fallback 404 handler
 $router->set404(static function (): void {
     Response::redirect('/', 302);

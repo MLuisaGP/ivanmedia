@@ -4138,53 +4138,62 @@ body.page-niche .site-header {
 }
 
 .quote-success-view {
-  padding: 40px 36px 48px;
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: calc(92vh - 20px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  padding: 36px 32px 42px;
   text-align: center;
+  box-sizing: border-box;
   animation: quoteFadeIn 0.35s ease;
 }
 
 .quote-success-badge {
   display: grid;
   place-items: center;
-  width: 68px;
-  height: 68px;
-  margin: 0 auto 20px;
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 16px;
   border-radius: 50%;
   background: rgba(122, 231, 182, 0.15);
   border: 2px solid #7ae7b6;
   color: #7ae7b6;
 }
 .quote-success-badge .svg-icon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
 }
 
 .quote-success-title {
-  margin: 0 0 10px;
-  font: 700 clamp(22px, 3vw, 28px) "Manrope", sans-serif;
+  margin: 0 0 8px;
+  font: 700 clamp(20px, 2.8vw, 26px) "Manrope", sans-serif;
   color: #FFFFFF;
   letter-spacing: -0.03em;
 }
 
 .quote-success-msg {
-  margin: 0 auto 28px;
-  max-width: 500px;
-  font-size: 13.5px;
-  line-height: 1.6;
+  margin: 0 auto 24px;
+  max-width: 520px;
+  font-size: 13px;
+  line-height: 1.55;
   color: #a4bed9;
 }
 
 .quote-summary-card {
-  max-width: 480px;
-  margin: 0 auto 28px;
-  padding: 18px 22px;
-  background: rgba(2, 17, 36, 0.65);
-  border: 1px solid rgba(215, 234, 255, 0.15);
-  border-radius: 10px;
+  max-width: 520px;
+  width: 100%;
+  margin: 0 auto 24px;
+  padding: 16px 20px;
+  background: rgba(2, 17, 36, 0.75);
+  border: 1px solid rgba(215, 234, 255, 0.18);
+  border-radius: 12px;
   text-align: left;
-  font-size: 12.5px;
-  line-height: 1.8;
+  font-size: 13px;
+  line-height: 1.5;
   color: #d1e2f3;
+  box-sizing: border-box;
 }
 .quote-summary-card strong {
   color: #FFFFFF;
@@ -4192,15 +4201,56 @@ body.page-niche .site-header {
 .quote-summary-card .summary-row {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 6px 0;
+  align-items: flex-start;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 0;
+  word-break: break-word;
 }
 .quote-summary-card .summary-row:last-child {
   border-bottom: none;
 }
-.quote-summary-card .summary-row span:first-child {
+.quote-summary-card .summary-label {
   color: #8aa4c2;
+  font-weight: 500;
+  flex: 0 0 auto;
+  min-width: 130px;
+}
+.quote-summary-card .summary-val {
+  color: #FFFFFF;
+  font-weight: 600;
+  text-align: right;
+  flex: 1 1 auto;
+  word-break: break-word;
+}
+.quote-summary-card .summary-folio-val {
+  color: #D7EAFF;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.quote-summary-card .summary-status-row {
+  border-top: 1px dashed rgba(215, 234, 255, 0.2);
+  margin-top: 8px;
+  padding-top: 10px;
+}
+.status-pill {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11.5px;
+  line-height: 1.4;
+}
+.status-pill-success {
+  background: rgba(16, 185, 129, 0.18);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+.status-pill-info {
+  background: rgba(96, 165, 250, 0.18);
+  color: #93c5fd;
+  border: 1px solid rgba(96, 165, 250, 0.35);
 }
 
 .quote-success-actions {
@@ -4399,20 +4449,42 @@ body.page-niche .site-header {
     font-size: 12.5px;
   }
   .quote-success-view {
-    padding: 28px 18px;
+    padding: 24px 16px 28px;
     flex: 1 1 auto;
     min-height: 0;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
+  .quote-summary-card {
+    padding: 12px 14px;
+    margin-bottom: 18px;
+  }
+  .quote-summary-card .summary-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+    padding: 7px 0;
+  }
+  .quote-summary-card .summary-label {
+    min-width: auto;
+    font-size: 11px;
+    color: #8aa4c2;
+  }
+  .quote-summary-card .summary-val {
+    text-align: left;
+    font-size: 12.5px;
+    width: 100%;
+  }
   .quote-success-actions {
     flex-direction: column;
     width: 100%;
+    gap: 10px;
   }
   .quote-success-actions .btn-quote-close-success,
   .quote-success-actions .btn-quote-whatsapp-success {
     width: 100%;
     justify-content: center;
+    box-sizing: border-box;
   }
 }
 .copy-toast {
