@@ -102,10 +102,15 @@ declare(strict_types=1);
             }
         }
         $numCols = 3;
-        $itemsPerCol = (int) ceil(count($regularGallery) / $numCols);
-        $galleryColumns = $itemsPerCol > 0 ? array_chunk($regularGallery, $itemsPerCol) : [];
-        while (count($galleryColumns) < $numCols) {
-            $galleryColumns[] = [];
+        $totalRegular = count($regularGallery);
+        $basePerCol = intdiv($totalRegular, $numCols);
+        $remainder = $totalRegular % $numCols;
+        $galleryColumns = [];
+        $offset = 0;
+        for ($col = 0; $col < $numCols; $col++) {
+            $colLen = $basePerCol + ($col < $remainder ? 1 : 0);
+            $galleryColumns[] = array_slice($regularGallery, $offset, $colLen);
+            $offset += $colLen;
         }
         $hasSpan23 = !empty($span23Items);
       ?>
@@ -136,8 +141,16 @@ declare(strict_types=1);
           </div>
         <?php endforeach; ?>
         <?php foreach ($galleryColumns as $colIndex => $colItems): ?>
+          <?php
+            $lastImgIdx = -1;
+            foreach ($colItems as $cIdx => $cItem) {
+                if (($cItem['type'] ?? 'image') !== 'video') {
+                    $lastImgIdx = $cIdx;
+                }
+            }
+          ?>
           <div class="pinterest-col" data-col="<?= $colIndex + 1 ?>">
-            <?php foreach ($colItems as $item): ?>
+            <?php foreach ($colItems as $itemIdx => $item): ?>
               <?php if (($item['type'] ?? 'image') === 'video'): ?>
                 <?php
                   $format = $item['format'] ?? 'vertical';
@@ -172,6 +185,9 @@ declare(strict_types=1);
                       $cardClasses[] = 'pin-card--square-crop';
                   } elseif ($aspect === 'medium') {
                       $cardClasses[] = 'pin-card--medium-crop';
+                  }
+                  if ($itemIdx === $lastImgIdx) {
+                      $cardClasses[] = 'pin-card--flex-fill';
                   }
                 ?>
                 <div class="<?= implode(' ', $cardClasses) ?>" data-image="<?= e($item['src']) ?>" data-title="<?= e($item['title'] ?? '') ?>" data-caption="<?= e($item['caption'] ?? '') ?>" data-aspect="<?= e($aspect) ?>">
@@ -232,12 +248,12 @@ declare(strict_types=1);
           <a href="<?= e($otherNiche->url()) ?>" class="other-sector-card reveal">
             <span class="other-sector-img">
               <img loading="lazy" src="<?= e($otherNiche->coverImage) ?>" alt="<?= e($otherNiche->name) ?>" onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='/assets/images/sectores/<?= e($otherNiche->id) ?>.webp';}">
+              <span class="other-sector-icon" aria-hidden="true"><?= icon('arrow-up-right') ?></span>
             </span>
             <div class="other-sector-body">
               <span class="other-sector-badge"><?= e($otherNiche->badge) ?></span>
               <strong><?= e($otherNiche->name) ?></strong>
             </div>
-            <span class="other-sector-arrow" aria-hidden="true">&rarr;</span>
           </a>
           <?php endif; ?>
         <?php endforeach; ?>

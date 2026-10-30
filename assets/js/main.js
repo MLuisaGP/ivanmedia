@@ -15,6 +15,9 @@
       document.body.classList.toggle('nav-open', !isOpen);
     });
     mainNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeNav));
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1024) closeNav();
+    }, { passive: true });
   }
 
   const progress = document.querySelector('#scrollProgress');
@@ -349,7 +352,7 @@
     if (formEl) formEl.scrollTop = 0;
 
     const activePane = quoteModal?.querySelector(`.quote-step-pane[data-step="${step}"]`);
-    if (window.innerWidth > 650) {
+    if (window.innerWidth > 1024) {
       const firstInput = activePane?.querySelector('input:not([type="hidden"]), textarea, select');
       firstInput?.focus();
     }
