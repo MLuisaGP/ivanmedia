@@ -84,8 +84,8 @@ class NicheRepository
                     [
                         'type' => 'image',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto:eco,w_700,c_limit/v1792719613/home/ivan%20portafolio/98-DSC00889.jpg',
-                        'title' => 'Guarnición y salsas artesanales',
-                        'caption' => 'Primer plano cenital destacando la frescura, variedad y colores vivos de las recetas de la casa.',
+                        'title' => 'Coctelería de autor: Sangría y limonada en capas',
+                        'caption' => 'Primer plano en copa destacando el contraste bicolor, la condensación fría en cristal y rodaja de limón fresco.',
                         'aspect' => 'square'
                     ],
                     [
@@ -113,8 +113,8 @@ class NicheRepository
                     [
                         'type' => 'image',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto:eco,w_700,c_limit/v1792719616/home/ivan%20portafolio/28-DSC01380.jpg',
-                        'title' => 'Taco artesanal con tortillas hechas a mano',
-                        'caption' => 'Primer plano vertical destacando textura crujiente, vapor y frescura.',
+                        'title' => 'Ambiente de salón y convivencia familiar',
+                        'caption' => 'Toma documental del comedor lleno de comensales disfrutando el servicio y la calidez del restaurante.',
                         'aspect' => 'tall'
                     ],
                     [
@@ -151,8 +151,8 @@ class NicheRepository
                     [
                         'type' => 'image',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto:eco,w_700,c_limit/v1792719621/home/ivan%20portafolio/DSC01812.jpg',
-                        'title' => 'Platillo insignia al detalle: Costra dorada',
-                        'caption' => 'Composición con iluminación rasante sobre el dorado crujiente de queso fundido y carne asada.',
+                        'title' => 'Hamburguesa de especialidad en pan brioche',
+                        'caption' => 'Primer plano en manos con fondo negro destacando doble proteína, queso gratinado y vegetales frescos.',
                         'aspect' => 'horizontal'
                     ],
                     [
@@ -165,8 +165,8 @@ class NicheRepository
                     [
                         'type' => 'image',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto:eco,w_700,c_limit/v1792719617/home/ivan%20portafolio/17-DSC02980.jpg',
-                        'title' => 'Especialidad caliente en comal tradicional',
-                        'caption' => 'Fotografía vertical con vapor y sazón sonorense en punto exacto de servicio.',
+                        'title' => 'Detalle en tazón: Menudo sonorense y pan con mantequilla',
+                        'caption' => 'Acercamiento con foco selectivo resaltando la textura del grano y caldo recién servido con pan dorado al fondo.',
                         'aspect' => 'tall'
                     ],
 
@@ -181,8 +181,8 @@ class NicheRepository
                     [
                         'type' => 'image',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto:eco,w_700,c_limit/v1792719604/home/ivan%20portafolio/26-DSC03135.jpg',
-                        'title' => 'Carne asada y corte sonorense al carbón',
-                        'caption' => 'Toma vertical con humo de brasa y sellado a la leña para transmitir el aroma norteño.',
+                        'title' => 'Menudo blanco tradicional y mesa de desayuno',
+                        'caption' => 'Plano cenital destacando el menudo sonorense con grano de maíz, acompañado de chilaquiles, café de olla y pan dorado.',
                         'aspect' => 'tall'
                     ],
                     [
@@ -288,8 +288,8 @@ class NicheRepository
                     [
                         'type' => 'image',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto:eco,w_700,c_limit/v1792721485/home/ivan%20portafolio/7-DSC00485.jpg',
-                        'title' => 'Captura en acción: Precisión del barista',
-                        'caption' => 'Congelado de movimiento a alta velocidad para documentar el rigor técnico de la extracción',
+                        'title' => 'Panqué artesanal con betún y nuez pecana',
+                        'caption' => 'Primer plano con luz natural suave destacando la esponjosidad del horneado y el brillo cremoso del frosting',
                         'aspect' => 'tall'
                     ],
                     [
@@ -310,15 +310,15 @@ class NicheRepository
                     [
                         'type' => 'image',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto:eco,w_700,c_limit/v1792721487/home/ivan%20portafolio/9-DSC00471.jpg',
-                        'title' => 'Contraste de texturas en cristalería',
-                        'caption' => 'Dirección de luz rasante para separar capas y destacar la densidad de la crema sobre café',
+                        'title' => 'Rol artesanal con glaseado y frutos rojos',
+                        'caption' => 'Iluminación lateral sobre cerámica mate para resaltar las capas suaves del pan, el betún cremoso y el toque de compota',
                         'aspect' => 'tall'
                     ],
                     [
                         'type' => 'image',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto:eco,w_700,c_limit/v1792721488/home/ivan%20portafolio/23-DSC00317.jpg',
-                        'title' => 'Macro publicitario de panadería artesanal',
-                        'caption' => 'Toma cenital con profundidad de campo corta para resaltar la textura crujiente y horneado',
+                        'title' => 'Experiencia y convivencia: Tardes de ajedrez',
+                        'caption' => 'Detalle en primer plano con desenfoque suave que transmite la atmósfera relajada y cultural de la cafetería',
                         'aspect' => 'horizontal'
                     ],
                     [
@@ -331,8 +331,8 @@ class NicheRepository
                     [
                         'type' => 'image',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto:eco,w_700,c_limit/v1792721491/home/ivan%20portafolio/24-DSC04817.jpg',
-                        'title' => 'Fotografía comercial de antojo',
-                        'caption' => 'Encuadre angular con luz envolvente que acentúa la frescura del glaseado y textura brioche',
+                        'title' => 'Iced Matcha Latte y repostería en charola',
+                        'caption' => 'Encuadre cálido con luz natural destacando el hielo cristalino del matcha frío junto a una rebanada de pastel',
                         'aspect' => 'horizontal'
                     ],
                     [
@@ -360,8 +360,8 @@ class NicheRepository
                     [
                         'type' => 'image',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto:eco,w_700,c_limit/v1792721495/home/ivan%20portafolio/25-DSC00308.jpg',
-                        'title' => 'Composición minimalista para branding',
-                        'caption' => 'Fotografía de alto impacto con haz de luz natural sobre cuero para identidad visual y web',
+                        'title' => 'Postre de autor y juegos de mesa',
+                        'caption' => 'Rebanada de chocoflan con dulce de leche y nuez acompañada de juegos de madera para tardes entre amigos',
                         'aspect' => 'tall'
                     ]
                 ],
