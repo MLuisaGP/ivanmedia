@@ -1071,10 +1071,21 @@ h2 {
   padding: 24px 0;
 }
 
+.results-phone-stage {
+  position: relative;
+  width: clamp(255px, 25vw, 305px);
+  aspect-ratio: 9/16;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .results-backdrop {
   position: absolute;
-  width: clamp(260px, 26vw, 310px);
-  aspect-ratio: 9/16;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: #90A9C8;
   border-radius: 28px;
   transform: rotate(4.5deg);
@@ -1094,7 +1105,8 @@ h2 {
 
 .reel-card-front {
   position: relative;
-  width: clamp(255px, 25vw, 305px);
+  width: 100%;
+  height: 100%;
   aspect-ratio: 9/16;
   border: 7px solid #FFFFFF;
   border-radius: 24px;
@@ -1138,19 +1150,21 @@ h2 {
 
 .floating-tag {
   position: absolute;
-  z-index: 2;
-  left: 8%;
-  bottom: 8%;
+  z-index: 5;
+  left: -20px;
+  bottom: 28px;
   padding: 12px 18px;
   color: #FFFFFF;
   background: #021B39;
   font-size: 8.5px;
   font-weight: 700;
   letter-spacing: 0.13em;
+  text-transform: uppercase;
   transform: rotate(-3deg);
   border-radius: 2px;
   box-shadow: 0 8px 24px rgba(2, 27, 57, 0.25);
   pointer-events: none;
+  white-space: nowrap;
 }
 
 .package-section {
@@ -2158,9 +2172,19 @@ h2 {
 .contact-section {
   position: relative;
   overflow: hidden;
-  padding: 85px 9% 25px;
+  padding: 85px 9% 45px;
   color: #021B39;
   background: #90A9C8;
+}
+
+.contact-section .section-label {
+  position: relative;
+  z-index: 2;
+  color: #021B39;
+}
+
+.contact-section .section-label span {
+  color: #FFFFFF;
 }
 
 .contact-orbit {
@@ -2175,39 +2199,44 @@ h2 {
   pointer-events: none;
 }
 
-.contact-section .section-label {
+.contact-wrapper {
   position: relative;
   z-index: 1;
-  color: #021B39;
-}
-
-.contact-section .section-label span {
-  color: #FFFFFF;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: clamp(40px, 6vw, 80px);
+  padding: 50px 0 70px;
 }
 
 .contact-content {
   position: relative;
   z-index: 1;
-  padding: 65px 0 100px;
 }
 
 .contact-content .eyebrow {
   color: #021B39;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .contact-content h2 {
   margin: 20px 0;
-  font-size: clamp(45px, 7.5vw, 100px);
+  font-size: clamp(40px, 6.2vw, 84px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 
 .contact-content h2 em {
   color: #FFFFFF;
+  font-style: italic;
 }
 
 .contact-content > p:not(.eyebrow) {
-  max-width: 420px;
+  max-width: 440px;
   color: #172f4a;
-  font-size: 13px;
+  font-size: 13.5px;
   line-height: 1.8;
 }
 
@@ -2216,7 +2245,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   gap: 28px;
-  margin-top: 22px;
+  margin-top: 26px;
   padding: 18px 46px;
   min-width: 250px;
   border-radius: 4px;
@@ -2224,7 +2253,9 @@ h2 {
   background: #021B39;
   font-size: 12.5px;
   font-weight: 700;
-  transition: gap 0.25s, background 0.25s, transform 0.25s;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(2, 27, 57, 0.25);
+  transition: gap 0.25s, background 0.25s, transform 0.25s, box-shadow 0.25s;
 }
 .contact-cta .svg-icon {
   width: 14px;
@@ -2235,9 +2266,71 @@ h2 {
   gap: 36px;
   transform: translateY(-2px);
   background: #143a64;
+  box-shadow: 0 14px 32px rgba(2, 27, 57, 0.35);
 }
 .contact-cta:hover .svg-icon {
   transform: translate(2px, -2px);
+}
+
+.contact-visual {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-portrait-card {
+  position: relative;
+  width: clamp(260px, 26vw, 360px);
+  aspect-ratio: 1/1;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #021B39;
+  border: 5px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 25px 60px rgba(2, 27, 57, 0.35);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.contact-portrait-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 32px 75px rgba(2, 27, 57, 0.42);
+}
+
+.contact-portrait-card .contact-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.contact-portrait-card .contact-portrait-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 12px;
+  background: rgba(2, 27, 57, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(215, 234, 255, 0.25);
+  border-radius: 20px;
+  color: #D7EAFF;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.contact-portrait-card .contact-portrait-badge .status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  flex-shrink: 0;
 }
 
 .back-top {
@@ -3835,8 +3928,8 @@ body.page-niche .site-header {
     margin: 0 auto;
   }
   .floating-tag {
-    left: 4%;
-    bottom: 3%;
+    left: -10px;
+    bottom: 20px;
   }
   .package-heading {
     align-items: flex-start;
@@ -3990,13 +4083,22 @@ body.page-niche .site-header {
     padding: 25px;
   }
   .contact-section {
-    padding: 65px 6% 20px;
+    padding: 65px 6% 35px;
+  }
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 30px 0 45px;
   }
   .contact-content {
-    padding: 55px 0 75px;
+    padding: 0;
   }
   .contact-content h2 {
-    font-size: clamp(44px, 12vw, 65px);
+    font-size: clamp(40px, 11vw, 60px);
+  }
+  .contact-portrait-card {
+    max-width: 300px;
+    margin: 0 auto;
   }
   #modalImage {
     max-height: 70vh;

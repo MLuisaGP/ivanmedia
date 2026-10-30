@@ -1,7 +1,6 @@
 *.zip
 *.jpg
 /assets/fotos/
-/assets/images/*
 !/assets/images/logos/
 !/assets/images/sectores/
 /assets/videos/
