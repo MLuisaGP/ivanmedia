@@ -92,14 +92,49 @@ declare(strict_types=1);
       </div>
 
       <?php
+        $span23Items = [];
+        $regularGallery = [];
+        foreach ($niche->gallery as $gItem) {
+            if (($gItem['span'] ?? '') === 'cols-2-3') {
+                $span23Items[] = $gItem;
+            } else {
+                $regularGallery[] = $gItem;
+            }
+        }
         $numCols = 3;
-        $itemsPerCol = (int) ceil(count($niche->gallery) / $numCols);
-        $galleryColumns = array_chunk($niche->gallery, $itemsPerCol);
+        $itemsPerCol = (int) ceil(count($regularGallery) / $numCols);
+        $galleryColumns = $itemsPerCol > 0 ? array_chunk($regularGallery, $itemsPerCol) : [];
         while (count($galleryColumns) < $numCols) {
             $galleryColumns[] = [];
         }
+        $hasSpan23 = !empty($span23Items);
       ?>
-      <div class="pinterest-gallery" id="pinterestGallery">
+      <div class="pinterest-gallery <?= $hasSpan23 ? 'pinterest-gallery--has-span-2-3' : '' ?>" id="pinterestGallery">
+        <?php foreach ($span23Items as $spanItem): ?>
+          <?php
+            $format = $spanItem['format'] ?? 'horizontal';
+            $badgeText = $spanItem['badge'] ?? ($format === 'horizontal' ? 'Video 16:9' : 'Reel 9:16');
+            $posterUrl = preg_replace('/\.(mp4|mov|webm)$/i', '.jpg', $spanItem['src']);
+          ?>
+          <div class="pin-card pin-card--video pin-card--span-2-3 reveal" data-type="video" data-format="<?= e($format) ?>">
+            <div class="pin-media-box">
+              <video class="pin-video-player" playsinline muted loop controls preload="none" poster="<?= e($posterUrl) ?>">
+                <source src="<?= e($spanItem['src']) ?>" type="video/mp4">
+                Tu navegador no soporta reproducción directa de video.
+              </video>
+              <span class="pin-video-badge">
+                <span class="video-indicator"></span> <?= e($badgeText) ?>
+              </span>
+            </div>
+            <div class="pin-video-meta">
+              <div class="pin-video-info">
+                <strong><?= e($spanItem['title'] ?? 'Video comercial') ?></strong>
+                <span><?= e($spanItem['caption'] ?? '') ?></span>
+              </div>
+              <span class="pin-format-pill"><?= $format === 'horizontal' ? '16:9 Horizontal' : '9:16 Vertical' ?></span>
+            </div>
+          </div>
+        <?php endforeach; ?>
         <?php foreach ($galleryColumns as $colIndex => $colItems): ?>
           <div class="pinterest-col" data-col="<?= $colIndex + 1 ?>">
             <?php foreach ($colItems as $item): ?>

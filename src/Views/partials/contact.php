@@ -22,10 +22,6 @@ declare(strict_types=1);
     <div class="contact-visual">
       <div class="contact-portrait-card">
         <img src="assets/images/ivan-contact.png" alt="Iván Molina - Creación y Dirección Audiovisual" class="contact-portrait-img" width="397" height="397" loading="lazy">
-        <div class="contact-portrait-badge">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span>Disponible para nuevos proyectos</span>
-        </div>
       </div>
     </div>
   </div>

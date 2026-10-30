@@ -62,6 +62,17 @@ class NicheRepository
                     'Estrategia de contenido visual para menús digitales, campañas y delivery'
                 ],
                 gallery: [
+                    // --- VIDEO DESTACADO FILA 1 (COLUMNAS 2 Y 3) ---
+                    [
+                        'type' => 'video',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/video/upload/f_auto,q_auto,w_900/v1792729400/home/ivan%20portafolio/restaurante_documental_la_salsa_hero.mp4',
+                        'title' => 'Documental gastronómico: La Salsa',
+                        'caption' => 'Producción audiovisual horizontal que retrata la historia, tradición, fuego en cocina y esencia detrás de cada platillo.',
+                        'format' => 'horizontal',
+                        'badge' => 'Documental 16:9',
+                        'span' => 'cols-2-3'
+                    ],
+
                     // --- COLUMNA 1 (Items 0 a 5) ---
                     [
                         'type' => 'image',
@@ -79,9 +90,9 @@ class NicheRepository
                     ],
                     [
                         'type' => 'video',
-                        'src' => 'https://res.cloudinary.com/dbs1ypch/video/upload/f_auto,q_auto,w_720/v1792729375/home/ivan%20portafolio/restaurante_chilaquiles_poblanos_vertical.mp4',
-                        'title' => 'Chilaquiles poblanos en preparación',
-                        'caption' => 'Reel vertical comercial con vertido de salsa y montaje en caliente para despertar antojo inmediato.',
+                        'src' => 'https://res.cloudinary.com/osmrbv2a/video/upload/f_auto,q_auto,w_720/v1793326134/DESAYUNOS_-_LA_SALSA_SE_DEBE_PAUTAR.mp4',
+                        'title' => 'Desayunos tradicionales: La Salsa',
+                        'caption' => 'Reel vertical comercial diseñado para pauta digital destacando la variedad, frescura y sazón de los desayunos de la casa.',
                         'format' => 'vertical',
                         'badge' => 'Reel 9:16'
                     ],
@@ -124,9 +135,9 @@ class NicheRepository
                     ],
                     [
                         'type' => 'video',
-                        'src' => 'https://res.cloudinary.com/dbs1ypch/video/upload/f_auto,q_auto,w_720/v1792729381/home/ivan%20portafolio/restaurante_burro_carne_chile_vertical.mp4',
-                        'title' => 'Burro de carne con chile: Especialidad norteña',
-                        'caption' => 'Producción vertical documentando el relleno jugoso, textura de tortilla sobaquera y sazón sonorense.',
+                        'src' => 'https://res.cloudinary.com/osmrbv2a/video/upload/f_auto,q_auto,w_720/v1793326139/TACO_DE_RIBEYE_CON_SALSA_DE_CACAHUATE_TOAST..mp4',
+                        'title' => 'Taco de Ribeye con salsa de cacahuate',
+                        'caption' => 'Producción vertical destacando la jugosidad del corte ribeye a las brasas coronado con salsa cremosa de cacahuate tostado.',
                         'format' => 'vertical',
                         'badge' => 'Especialidad 9:16'
                     ],
@@ -390,18 +401,12 @@ class NicheRepository
                         'aspect' => 'tall'
                     ],
                     [
-                        'type' => 'image',
-                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792724404/home/ivan%20portafolio/1-DSC05107.jpg',
-                        'title' => 'Composición comercial para suplementación deportiva',
-                        'caption' => 'Enfoque nítido en empaque de Amino\'s con definición de abdomen como prueba de valor para branding nutricional',
-                        'aspect' => 'tall'
-                    ],
-                    [
-                        'type' => 'image',
-                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792724401/home/ivan%20portafolio/fitness_curl_neon_better.jpg',
-                        'title' => 'Pico de contracción bajo neón "BETTER"',
-                        'caption' => 'Composición vertical con fondo oscuro y luz ambiental roja, simbolizando superación física con mancuerna pesada',
-                        'aspect' => 'tall'
+                        'type' => 'video',
+                        'src' => 'https://res.cloudinary.com/osmrbv2a/video/upload/f_auto,q_auto,w_720/v1793326494/Si_tu_objetivo_es_mejorar_gluteo.mp4',
+                        'title' => 'Técnica y entrenamiento enfocado en glúteo',
+                        'caption' => 'Reel vertical educativo y dinámico explicando ejecución biomecánica y consejos prácticos para hipertrofia.',
+                        'format' => 'vertical',
+                        'badge' => 'Reel 9:16'
                     ],
                     [
                         'type' => 'image',
@@ -418,19 +423,19 @@ class NicheRepository
                         'aspect' => 'tall'
                     ],
                     [
+                        'type' => 'image',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792724405/home/ivan%20portafolio/4-DSC00341.jpg',
+                        'title' => 'Retrato editorial monocromático en cajón pliométrico',
+                        'caption' => 'Composición monocromática de alto contraste resaltando firmeza, tono muscular y elegancia deportiva',
+                        'aspect' => 'tall'
+                    ],
+                    [
                         'type' => 'video',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/video/upload/f_auto,q_auto,w_720/v1792724427/home/ivan%20portafolio/fitness_triceps_dumbbell_overhead.mp4',
                         'title' => 'Reel de máxima vascularidad y extensión de tríceps',
                         'caption' => 'Formato vertical 9:16 con plano cerrado captando detalle vascular, sudor y esfuerzo al límite',
                         'format' => 'vertical',
                         'badge' => 'Reel 9:16'
-                    ],
-                    [
-                        'type' => 'image',
-                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792724405/home/ivan%20portafolio/4-DSC00341.jpg',
-                        'title' => 'Retrato editorial monocromático en cajón pliométrico',
-                        'caption' => 'Composición monocromática de alto contraste resaltando firmeza, tono muscular y elegancia deportiva',
-                        'aspect' => 'tall'
                     ],
                     [
                         'type' => 'image',
@@ -495,6 +500,14 @@ class NicheRepository
                         'title' => 'Fotografía comercial para línea de activewear',
                         'caption' => 'Iluminación suave y cálida en sala de pesas para catálogo textil fitness, proyectando vitalidad y bienestar',
                         'aspect' => 'tall'
+                    ],
+                    [
+                        'type' => 'video',
+                        'src' => 'https://res.cloudinary.com/osmrbv2a/video/upload/f_auto,q_auto,w_720/v1793326860/SANNA_VIDEO_2.mp4',
+                        'title' => 'Producción audiovisual deportiva: SANNA',
+                        'caption' => 'Reel vertical dinámico destacando disciplina, movimiento atlético y energía de entrenamiento.',
+                        'format' => 'vertical',
+                        'badge' => 'Reel 9:16'
                     ],
                     [
                         'type' => 'image',
@@ -841,7 +854,18 @@ class NicheRepository
                     'Producción audiovisual corporativa para clínicas especializadas y marcas locales'
                 ],
                 gallery: [
-                    // --- COLUMNA 1 (Items 0 a 5) ---
+                    // --- VIDEO DESTACADO FILA 1 (COLUMNAS 2 Y 3) ---
+                    [
+                        'type' => 'video',
+                        'src' => 'https://res.cloudinary.com/osmrbv2a/video/upload/f_auto,q_auto,w_900/v1793327258/Grabaci%C3%B3n_2026-10-29_184859.mp4',
+                        'title' => 'Producción audiovisual comercial y corporativa',
+                        'caption' => 'Dirección cinematográfica horizontal para posicionamiento de marcas locales y presentación de alto impacto.',
+                        'format' => 'horizontal',
+                        'badge' => 'Video 16:9',
+                        'span' => 'cols-2-3'
+                    ],
+
+                    // --- COLUMNA 1 (7 elementos: índice 0 a 6, video comercial en última fila) ---
                     [
                         'type' => 'image',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792731787/home/ivan%20portafolio/negocio_padel-sportswear.jpg',
@@ -851,10 +875,10 @@ class NicheRepository
                     ],
                     [
                         'type' => 'image',
-                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792731788/home/ivan%20portafolio/negocio_gallery-2.jpg',
-                        'title' => 'Editorial de óptica y accesorios de lujo',
-                        'caption' => 'Primer plano cerrado a silueta de gafas de sol Vogue: iluminación perimetral que define la textura del armazón y el reflejo del lente.',
-                        'aspect' => 'square'
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792724404/home/ivan%20portafolio/1-DSC05107.jpg',
+                        'title' => 'Composición comercial para suplementación deportiva',
+                        'caption' => 'Enfoque nítido en empaque de producto con iluminación controlada como prueba de valor para branding comercial.',
+                        'aspect' => 'tall'
                     ],
                     [
                         'type' => 'video',
@@ -866,17 +890,18 @@ class NicheRepository
                     ],
                     [
                         'type' => 'image',
-                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792731788/home/ivan%20portafolio/negocio_gallery-4.jpg',
-                        'title' => 'Editorial western y atardecer sonorense',
-                        'caption' => 'Composición horizontal en locación abierta: pareja con mezclilla y gafas oscuras capturada en la hora dorada del desierto.',
-                        'aspect' => 'horizontal'
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792731788/home/ivan%20portafolio/negocio_gallery-2.jpg',
+                        'title' => 'Editorial de óptica y accesorios de lujo',
+                        'caption' => 'Primer plano cerrado a silueta de gafas de sol Vogue: iluminación perimetral que define la textura del armazón y el reflejo del lente.',
+                        'aspect' => 'tall'
                     ],
                     [
-                        'type' => 'image',
-                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792731789/home/ivan%20portafolio/negocio_gallery-1.jpg',
-                        'title' => 'Lookbook de estudio y bolso acolchado de diseño',
-                        'caption' => 'Modelo en movimiento con bolso puffer Enso sobre fondo blanco puro: fotografía limpia diseñada para e-commerce y tiendas digitales.',
-                        'aspect' => 'medium'
+                        'type' => 'video',
+                        'src' => 'https://res.cloudinary.com/osmrbv2a/video/upload/f_auto,q_auto,w_720/v1793327243/RAM_VIDEO_OFICIAL_-_KH.mp4',
+                        'title' => 'Campaña automotriz y comercial: RAM Oficial',
+                        'caption' => 'Producción audiovisual de alto impacto destacando potencia, diseño e imponente presencia en locación.',
+                        'format' => 'vertical',
+                        'badge' => 'Spot Oficial'
                     ],
                     [
                         'type' => 'image',
@@ -885,21 +910,29 @@ class NicheRepository
                         'caption' => 'Atleta sentada en cancha de pádel con pala y pelota: balance tonal que combina el azul intenso del césped con indumentaria monocromática.',
                         'aspect' => 'tall'
                     ],
+                    [
+                        'type' => 'video',
+                        'src' => 'https://res.cloudinary.com/osmrbv2a/video/upload/f_auto,q_auto,w_720/v1793327258/Grabaci%C3%B3n_2026-10-29_192728.mp4',
+                        'title' => 'Contenido comercial dinámico para marcas',
+                        'caption' => 'Producción audiovisual enfocada en captar la atención y destacar la propuesta de valor del negocio.',
+                        'format' => 'horizontal',
+                        'badge' => 'Video Comercial'
+                    ],
 
-                    // --- COLUMNA 2 (Items 6 a 11) ---
+                    // --- COLUMNA 2 (7 elementos: índice 7 a 13) ---
                     [
                         'type' => 'image',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792731790/home/ivan%20portafolio/negocio_reloj-producto.jpg',
                         'title' => 'Macrotextura en relojería y detalles finos',
                         'caption' => 'Primer plano a reloj clásico con correa de cuero y acabados metálicos: fotografía de producto con luz rasante para destacar precisión artesanal.',
-                        'aspect' => 'square'
+                        'aspect' => 'tall'
                     ],
                     [
                         'type' => 'image',
-                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792731790/home/ivan%20portafolio/negocio_gallery-8.jpg',
-                        'title' => 'Textil deportivo y actitud en red',
-                        'caption' => 'Atleta femenina apoyada en red de pádel con gafas oscuras: encuadre de plano medio que resalta la confección técnica del conjunto.',
-                        'aspect' => 'medium'
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792731788/home/ivan%20portafolio/negocio_gallery-4.jpg',
+                        'title' => 'Editorial western y atardecer sonorense',
+                        'caption' => 'Composición horizontal en locación abierta: pareja con mezclilla y gafas oscuras capturada en la hora dorada del desierto.',
+                        'aspect' => 'horizontal'
                     ],
                     [
                         'type' => 'video',
@@ -908,6 +941,13 @@ class NicheRepository
                         'caption' => 'Producción audiovisual envolvente: iluminación neón, cristalería en suspensión y atmósfera vibrante para posicionar la experiencia nocturna.',
                         'format' => 'vertical',
                         'badge' => 'Gastro & Lounge'
+                    ],
+                    [
+                        'type' => 'image',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792731790/home/ivan%20portafolio/negocio_gallery-8.jpg',
+                        'title' => 'Textil deportivo y actitud en red',
+                        'caption' => 'Atleta femenina apoyada en red de pádel con gafas oscuras: encuadre de plano medio que resalta la confección técnica del conjunto.',
+                        'aspect' => 'tall'
                     ],
                     [
                         'type' => 'image',
@@ -931,7 +971,7 @@ class NicheRepository
                         'aspect' => 'tall'
                     ],
 
-                    // --- COLUMNA 3 (Items 12 a 17) ---
+                    // --- COLUMNA 3 (6 elementos: índice 14 a 19) ---
                     [
                         'type' => 'image',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792731794/home/ivan%20portafolio/negocio_DSC04994.jpg',
@@ -944,7 +984,7 @@ class NicheRepository
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792731795/home/ivan%20portafolio/negocio_gallery-3.jpg',
                         'title' => 'Estilismo masculino y accesorios al aire libre',
                         'caption' => 'Encuadre panorámico con mano al bolsillo mostrando reloj dorado y camisa de lino: elegancia relajada para catálogos de moda masculina.',
-                        'aspect' => 'horizontal'
+                        'aspect' => 'tall'
                     ],
                     [
                         'type' => 'video',
@@ -956,23 +996,23 @@ class NicheRepository
                     ],
                     [
                         'type' => 'image',
+                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792731789/home/ivan%20portafolio/negocio_gallery-1.jpg',
+                        'title' => 'Lookbook de estudio y bolso acolchado de diseño',
+                        'caption' => 'Modelo en movimiento con bolso puffer Enso sobre fondo blanco puro: fotografía limpia diseñada para e-commerce y tiendas digitales.',
+                        'aspect' => 'tall'
+                    ],
+                    [
+                        'type' => 'image',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792731795/home/ivan%20portafolio/negocio_DSC05186.jpg',
                         'title' => 'Gafas urbanas y actitud contemporánea',
                         'caption' => 'Retrato en plano medio con gafas de sol oscuras y playera blanca: frescura y minimalismo para colecciones de moda juvenil.',
-                        'aspect' => 'square'
+                        'aspect' => 'tall'
                     ],
                     [
                         'type' => 'image',
                         'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792731796/home/ivan%20portafolio/negocio_DSC04909.jpg',
                         'title' => 'Portabilidad y estilo en marroquinería',
                         'caption' => 'Modelo sentada con bolso de mano sobre set neutro: iluminación suave que resalta los herrajes y volumen del accesorio.',
-                        'aspect' => 'medium'
-                    ],
-                    [
-                        'type' => 'image',
-                        'src' => 'https://res.cloudinary.com/dbs1ypch/image/upload/f_auto,q_auto,w_900/v1792731797/home/ivan%20portafolio/negocio_gallery-5.jpg',
-                        'title' => 'Retrato dorado y calidez del atardecer',
-                        'caption' => 'Primer plano con luz dorada envolvente y gafas de sol: acabado editorial cinematográfico que humaniza y eleva la imagen de marca.',
                         'aspect' => 'tall'
                     ]
                 ],
