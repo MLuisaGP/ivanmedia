@@ -18,8 +18,8 @@ declare(strict_types=1);
     <div class="results-phone-stage">
       <div class="results-backdrop"></div>
       <div class="reel-card reel-card-front" id="reelFrontCard">
-        <video class="reel-video" id="reelVideo" autoplay muted loop playsinline poster="https://res.cloudinary.com/dbs1ypch/video/upload/f_auto,q_auto:eco,w_540,c_limit,so_1/v1792731815/home/ivan%20portafolio/negocio_vid_dorian_lounge.jpg" preload="metadata" aria-label="Reel audiovisual en movimiento - Dorian">
-          <source src="https://res.cloudinary.com/dbs1ypch/video/upload/f_auto,q_auto:eco,w_540,c_limit/v1792731815/home/ivan%20portafolio/negocio_vid_dorian_lounge.mp4" type="video/mp4">
+        <video class="reel-video" id="reelVideo" autoplay muted loop playsinline poster="https://res.cloudinary.com/osmrbv2a/video/upload/f_auto,q_auto:eco,w_540,c_limit,so_1/v1793335817/negocio_vid_dorian_lounge.jpg" preload="metadata" aria-label="Reel audiovisual en movimiento - Dorian">
+          <source src="https://res.cloudinary.com/osmrbv2a/video/upload/f_auto,q_auto:eco,w_540,c_limit/v1793335817/negocio_vid_dorian_lounge.mp4" type="video/mp4">
           <source src="/assets/videos/dorian.mp4" type="video/mp4">
         </video>
         <button class="play-button" id="reelPlayBtn" type="button" aria-label="Reproducir o pausar video"><?= icon('play') ?></button>
