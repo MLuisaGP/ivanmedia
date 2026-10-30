@@ -134,6 +134,81 @@
     }
   }
 
+  // ============================================
+  // ANIMACIÓN DE PRECIO EN SECCIÓN 07 (PAQUETE / PRICING)
+  // ============================================
+  const pricingBox = document.querySelector('#pricingBox');
+  const pricingPriceEl = document.querySelector('#pricingSpecialPrice');
+
+  if (pricingPriceEl) {
+    const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const targetPrice = parseInt(pricingPriceEl.dataset.target || '2940', 10);
+
+    const animatePrice = () => {
+      if (prefersReducedMotion) {
+        pricingPriceEl.textContent = targetPrice.toLocaleString('en-US');
+        if (pricingBox) {
+          pricingBox.classList.add('is-triggered', 'has-shimmer');
+        }
+        return;
+      }
+
+      if (pricingBox) {
+        pricingBox.classList.add('is-triggered');
+      }
+
+      const duration = 1400;
+      const startTime = performance.now();
+      const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+      const step = (now) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const currentVal = Math.round(targetPrice * easeOutCubic(progress));
+
+        pricingPriceEl.textContent = currentVal.toLocaleString('en-US');
+
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        } else {
+          pricingPriceEl.textContent = targetPrice.toLocaleString('en-US');
+          if (pricingBox) {
+            pricingBox.classList.add('is-popping');
+            setTimeout(() => {
+              pricingBox.classList.remove('is-popping');
+              pricingBox.classList.add('has-shimmer');
+            }, 360);
+          }
+        }
+      };
+
+      window.requestAnimationFrame(step);
+    };
+
+    if (!prefersReducedMotion) {
+      pricingPriceEl.textContent = '0';
+    }
+
+    if ('IntersectionObserver' in window) {
+      const observerTarget = pricingBox || pricingPriceEl;
+      const priceObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animatePrice();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.4,
+        rootMargin: '0px 0px -30px 0px'
+      });
+
+      priceObserver.observe(observerTarget);
+    } else {
+      animatePrice();
+    }
+  }
+
   const filters = document.querySelectorAll('.filter-btn');
   const filterCards = document.querySelectorAll('.project-card[data-category]');
   if (filters.length > 0) {
