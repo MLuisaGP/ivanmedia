@@ -775,7 +775,8 @@ class NicheRepository
                         'src' => 'https://res.cloudinary.com/osmrbv2a/image/upload/f_auto,q_auto:eco,w_700,c_limit/v1793335813/abogados_2-DSC06670.jpg',
                         'title' => 'Consejo directivo y certidumbre legal',
                         'caption' => 'Socio en sillón de piel capitonada en postura de escucha activa: elegancia sobria para perfiles de alto nivel directivo.',
-                        'aspect' => 'medium'
+                        'aspect' => 'tall',
+                        'pos' => 'top'
                     ],
                     [
                         'type' => 'video',
@@ -783,7 +784,8 @@ class NicheRepository
                         'title' => 'Criterio legal: Responsabilidad civil y reclamación de daños',
                         'caption' => 'Explicación procesal sobre negligencia, daño moral y reparación integral del perjuicio en controversias civiles.',
                         'format' => 'vertical',
-                        'badge' => 'Criterio Jurídico'
+                        'badge' => 'Criterio Jurídico',
+                        'compact' => true
                     ],
                     [
                         'type' => 'image',

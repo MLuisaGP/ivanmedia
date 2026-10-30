@@ -155,8 +155,9 @@ declare(strict_types=1);
                 <?php
                   $format = $item['format'] ?? 'vertical';
                   $badgeText = $item['badge'] ?? ($format === 'horizontal' ? 'Video 16:9' : 'Reel 9:16');
+                  $videoCardClass = 'pin-card pin-card--video reveal' . (!empty($item['compact']) ? ' pin-card--video-compact' : '');
                 ?>
-                <div class="pin-card pin-card--video reveal" data-type="video" data-format="<?= e($format) ?>">
+                <div class="<?= $videoCardClass ?>" data-type="video" data-format="<?= e($format) ?>">
                   <div class="pin-media-box">
                     <?php $posterUrl = preg_replace('/\.(mp4|mov|webm)$/i', '.jpg', $item['src']); ?>
                     <video class="pin-video-player" playsinline muted loop controls preload="none" poster="<?= e($posterUrl) ?>">
@@ -185,6 +186,9 @@ declare(strict_types=1);
                       $cardClasses[] = 'pin-card--square-crop';
                   } elseif ($aspect === 'medium') {
                       $cardClasses[] = 'pin-card--medium-crop';
+                  }
+                  if (($item['pos'] ?? '') === 'top') {
+                      $cardClasses[] = 'pin-card--pos-top';
                   }
                   if ($itemIdx === $lastImgIdx) {
                       $cardClasses[] = 'pin-card--flex-fill';
