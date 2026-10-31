@@ -46,82 +46,106 @@ class QuoteService
      */
     public function process(array $input, string $ip = ''): array
     {
-        // 1. Validation
+        // 1. Consentimiento Clickwrap obligatorio
+        $consentVal = strtolower(trim((string)($input['consentimiento'] ?? '')));
+        $hasConsent = in_array($consentVal, ['aceptado', '1', 'true', 'on', 'yes'], true);
+        if (!$hasConsent) {
+            return [
+                'success' => false,
+                'message' => 'Debes marcar la casilla para aceptar los Términos y Condiciones y el Aviso de Privacidad antes de enviar.',
+                'errors' => ['consentimiento' => ['Por favor marca la casilla de aceptación legal']],
+                'folio' => null,
+                'pdfFile' => null,
+                'emailSent' => false,
+                'emailError' => null,
+            ];
+        }
+
+        // 2. Validación de datos con etiquetas claras en español
         $v = new Validator($input);
         $v->rule('required', ['nombre', 'marca', 'email', 'telefono', 'giro', 'tiempo_mercado', 'canales_digitales', 'cliente_ideal', 'competidores', 'presupuesto']);
         $v->rule('email', 'email');
         $v->rule('lengthMin', 'nombre', 2);
         $v->rule('lengthMin', 'marca', 2);
-        $v->rule('lengthMin', 'giro', 5);
-        $v->rule('lengthMin', 'cliente_ideal', 5);
-        $v->rule('lengthMin', 'competidores', 2);
+        $v->rule('lengthMin', 'giro', 2);
+        $v->rule('lengthMin', 'cliente_ideal', 2);
+        $v->rule('lengthMin', 'competidores', 1);
 
-        $v->labels([
-            'nombre' => 'Nombre completo',
-            'marca' => 'Nombre del negocio o marca',
-            'email' => 'Correo electrónico',
-            'telefono' => 'Número de teléfono o WhatsApp',
-            'giro' => 'Giro del negocio',
-            'tiempo_mercado' => 'Tiempo en el mercado',
-            'canales_digitales' => 'Página web o redes sociales',
-            'cliente_ideal' => 'Cliente ideal',
-            'competidores' => 'Competidores o marcas de referencia',
-            'presupuesto' => 'Presupuesto mensual estimado',
-        ]);
+        $labels = [
+            'nombre' => 'Nombre completo (Paso 1)',
+            'marca' => 'Nombre del negocio o marca (Paso 1)',
+            'email' => 'Correo electrónico válido (Paso 1)',
+            'telefono' => 'Número de teléfono o WhatsApp (Paso 1)',
+            'giro' => 'Giro del negocio (Paso 2)',
+            'tiempo_mercado' => 'Tiempo en el mercado (Paso 2)',
+            'canales_digitales' => 'Página web o redes (Paso 2)',
+            'cliente_ideal' => 'Cliente ideal (Paso 4)',
+            'competidores' => 'Competidores o referencias (Paso 4)',
+            'presupuesto' => 'Presupuesto mensual estimado (Paso 5)',
+        ];
+        $v->labels($labels);
 
         if (!$v->validate()) {
+            $errFields = [];
+            foreach (array_keys($v->errors()) as $field) {
+                $errFields[] = $labels[$field] ?? $field;
+            }
             return [
                 'success' => false,
-                'message' => 'Por favor revisa los campos requeridos del formulario.',
+                'message' => 'Por favor completa o revisa los siguientes campos: ' . implode(', ', $errFields) . '.',
                 'errors' => $v->errors(),
                 'folio' => null,
                 'pdfFile' => null,
                 'emailSent' => false,
+                'emailError' => null,
             ];
         }
 
-        // 2. Generate unique folio & metadata
+        // 3. Generate unique folio & legal metadata
         $folio = 'COT-' . date('Ymd') . '-' . strtoupper(substr(bin2hex(random_bytes(3)), 0, 5));
         $data = $input;
         $data['folio'] = $folio;
         $data['ip'] = $ip;
+        $data['consentimiento_legal'] = [
+            'otorgado' => true,
+            'declaracion' => 'He leído y acepto los Términos y Condiciones y el Aviso de Privacidad',
+            'timestamp' => date('Y-m-d H:i:s'),
+            'ip' => $ip,
+            'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? 'Web Client',
+        ];
         $data['created_at'] = date('Y-m-d H:i:s');
 
-        // 3. Save JSON record to local storage (Audit trail)
+        // 4. Save JSON record to local storage (Audit trail)
         $this->saveRecord($data);
 
-        // 4. Generate branded PDF
+        // 5. Generate branded PDF
         $pdfResult = $this->pdfService->generate($data);
 
-        // 5. Send SMTP email with PDF attachment
-        $mailResult = $this->mailService->sendQuoteNotification(
-            $data,
-            $pdfResult['filePath'],
-            $pdfResult['fileName']
-        );
+        // 6. Send SMTP email notification to admin with PDF attached
+        $emailResult = $this->mailService->sendQuoteNotification($data, $pdfResult['filePath'], $pdfResult['fileName']);
 
         return [
             'success' => true,
-            'message' => $mailResult['success']
-                ? '¡Solicitud de cotización registrada y enviada con éxito!'
-                : '¡Solicitud de cotización registrada con éxito (folio ' . $folio . ')!',
+            'message' => '¡Cotización generada y enviada con éxito!',
             'errors' => null,
             'folio' => $folio,
             'pdfFile' => $pdfResult['fileName'],
-            'emailSent' => $mailResult['success'],
-            'emailError' => $mailResult['error'] ?? null,
+            'emailSent' => $emailResult['success'],
+            'emailError' => $emailResult['error'],
         ];
     }
 
     /**
-     * Persist quote inquiry to quotes.jsonl
+     * Persist quote submission to secure JSON file for local auditing.
      *
      * @param array<string, mixed> $data
      */
     private function saveRecord(array $data): void
     {
-        $logFile = $this->storageDir . '/quotes.jsonl';
-        $entry = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) . PHP_EOL;
-        @file_put_contents($logFile, $entry, FILE_APPEND);
+        $folio = preg_replace('/[^a-zA-Z0-9_\-]/', '_', (string)($data['folio'] ?? uniqid('quote_', true)));
+        $fileName = "quote_{$folio}.json";
+        $filePath = $this->storageDir . '/' . $fileName;
+
+        file_put_contents($filePath, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 }

@@ -373,6 +373,16 @@ $whatsappUrl = isset($site) && !empty($site->whatsapp) ? $site->whatsapp : (func
           <textarea id="q_expectativas" name="expectativas" rows="3" placeholder="Ej. Claridad en tiempos de entrega, iniciativa con ideas de contenido, compromiso y comunicación directa..."></textarea>
         </div>
 
+        <div class="form-group form-group--consent" id="groupConsent" style="margin-top: 18px; margin-bottom: 8px;">
+          <label for="q_consent" style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 13px; line-height: 1.5; color: #D7EAFF;">
+            <input type="checkbox" id="q_consent" name="consentimiento" value="aceptado" required style="width: 18px; height: 18px; min-width: 18px; margin-top: 2px; accent-color: #38bdf8; cursor: pointer;">
+            <span>
+              He leído y acepto los <a href="/terminos-y-condiciones" target="_blank" rel="noopener" style="color: #FFFFFF; text-decoration: underline; font-weight: 700;">Términos y Condiciones</a> y el <a href="/aviso-de-privacidad" target="_blank" rel="noopener" style="color: #FFFFFF; text-decoration: underline; font-weight: 700;">Aviso de Privacidad</a>.
+            </span>
+          </label>
+          <span class="field-error-msg" id="consentErrorMsg" style="display: none; color: #ff8585; font-size: 11.5px; margin-top: 6px; padding-left: 28px;">Por favor acepta los Términos y Condiciones y el Aviso de Privacidad para enviar tu solicitud</span>
+        </div>
+
         <div class="quote-step-actions">
           <button type="button" class="btn-step-prev" data-prev="4">
             <span class="btn-icon"><?= icon('arrow-left') ?></span>

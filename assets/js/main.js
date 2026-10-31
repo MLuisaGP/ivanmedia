@@ -453,6 +453,16 @@
         isValid = false;
         if (!firstInvalid) firstInvalid = group;
       }
+
+      const consentCheckbox = quoteForm.querySelector('#q_consent');
+      const consentError = quoteForm.querySelector('#consentErrorMsg');
+      if (consentCheckbox && !consentCheckbox.checked) {
+        if (consentError) consentError.style.display = 'block';
+        isValid = false;
+        if (!firstInvalid) firstInvalid = consentCheckbox;
+      } else if (consentError) {
+        consentError.style.display = 'none';
+      }
     }
 
     if (!isValid && firstInvalid) {
@@ -490,6 +500,13 @@
         }
       }
     });
+  });
+
+  quoteForm?.querySelector('#q_consent')?.addEventListener('change', (e) => {
+    const consentError = quoteForm.querySelector('#consentErrorMsg');
+    if (consentError) {
+      consentError.style.display = e.target.checked ? 'none' : 'block';
+    }
   });
 
   checkObjetivoOtro?.addEventListener('change', () => {
@@ -607,6 +624,10 @@
         if (quoteForm) quoteForm.style.display = 'none';
         if (quoteSuccessView) quoteSuccessView.style.display = 'block';
       } else {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+        }
         const errorMsg = (result && result.message) ? result.message : 'Ocurrió un error al procesar tu solicitud.';
         alert(errorMsg);
       }

@@ -6,8 +6,9 @@ declare(strict_types=1);
  * @var \App\Models\Niche|null $niche
  */
 $isNiche = isset($niche) && $niche !== null;
+$isSub = $isNiche || !empty($isSubpage);
 ?>
-<header class="site-header <?= $isNiche ? 'site-header--solid' : '' ?>" id="top">
+<header class="site-header <?= $isSub ? 'site-header--solid' : '' ?>" id="top">
   <a class="brand" href="/" aria-label="<?= e($site->name) ?>, inicio">
     <img src="/assets/images/logos/ivan.Media.png" alt="<?= e($site->name) ?>" class="brand-logo" width="220" height="51">
   </a>
@@ -22,6 +23,13 @@ $isNiche = isset($niche) && $niche !== null;
         <a href="/#services"><span class="nav-num">03</span>Servicios</a>
         <a href="/#work"><span class="nav-num">04</span>Sectores</a>
         <a href="#galeria"><span class="nav-num">05</span>Galería</a>
+        <a href="/#contact"><span class="nav-num">06</span>Contacto</a>
+      <?php elseif (!empty($isSubpage)): ?>
+        <a href="/"><span class="nav-num">01</span>Inicio</a>
+        <a href="/#about"><span class="nav-num">02</span>Quién soy</a>
+        <a href="/#services"><span class="nav-num">03</span>Servicios</a>
+        <a href="/#work"><span class="nav-num">04</span>Sectores</a>
+        <a href="/#pricing"><span class="nav-num">05</span>Paquetes</a>
         <a href="/#contact"><span class="nav-num">06</span>Contacto</a>
       <?php else: ?>
         <a href="#about"><span class="nav-num">01</span>Quién soy</a>

@@ -16,7 +16,7 @@ declare(strict_types=1);
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#021B39">
   <meta name="description" content="<?= e($site->description) ?>">
-  <title><?= isset($niche) ? e($niche->name) . ' — ' . e($site->name) : e($site->name) . ' — Contenido que se siente. Resultados que se notan.' ?></title>
+  <title><?= isset($pageTitle) && $pageTitle !== '' ? e($pageTitle) . ' — ' . e($site->name) : (isset($niche) ? e($niche->name) . ' — ' . e($site->name) : e($site->name) . ' — Contenido que se siente. Resultados que se notan.') ?></title>
   <link rel="icon" type="image/png" href="/assets/images/logos/logoIM.png">
   <link rel="shortcut icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/assets/images/logos/logoIM.png">
@@ -26,10 +26,10 @@ declare(strict_types=1);
   <link rel="stylesheet" href="/assets/css/style.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
-<body id="top" class="<?= isset($niche) ? 'page-niche' : 'page-home' ?>">
+<body id="top" class="<?= isset($bodyClass) && $bodyClass !== '' ? e($bodyClass) : (isset($niche) ? 'page-niche' : 'page-home') ?>">
   <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
 
-  <?= \App\Core\View::partial('partials/header', ['site' => $site, 'niche' => $niche ?? null]) ?>
+  <?= \App\Core\View::partial('partials/header', ['site' => $site, 'niche' => $niche ?? null, 'isSubpage' => $isSubpage ?? null]) ?>
 
   <main>
     <?= $content ?>

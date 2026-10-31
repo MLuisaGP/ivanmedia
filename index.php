@@ -34,6 +34,20 @@ $router->get('/nicho/([a-z0-9\-]+)', static function (string $slug): void {
     (new NicheController())->show($slug);
 });
 
+// Route: Legal Disclosures (Privacy Policy & Terms)
+$router->get('/aviso-de-privacidad', static function (): void {
+    (new \App\Controllers\LegalController())->privacy();
+});
+$router->get('/aviso-de-privacidad/descargar', static function (): void {
+    (new \App\Controllers\LegalController())->downloadPrivacyPdf();
+});
+$router->get('/terminos-y-condiciones', static function (): void {
+    (new \App\Controllers\LegalController())->terms();
+});
+$router->get('/terminos-y-condiciones/descargar', static function (): void {
+    (new \App\Controllers\LegalController())->downloadTermsPdf();
+});
+
 // Route: Redirect /contacto to the contact anchor
 $router->get('/contacto', static function (): void {
     Response::redirect('/#contact', 301);
