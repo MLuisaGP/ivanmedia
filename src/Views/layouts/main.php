@@ -24,6 +24,9 @@ declare(strict_types=1);
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <?php if (isset($bodyClass) && $bodyClass === 'page-legal'): ?>
+  <link rel="stylesheet" href="/assets/css/legal.css">
+  <?php endif; ?>
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body id="top" class="<?= isset($bodyClass) && $bodyClass !== '' ? e($bodyClass) : (isset($niche) ? 'page-niche' : 'page-home') ?>">
@@ -39,6 +42,7 @@ declare(strict_types=1);
 
   <?= \App\Core\View::partial('partials/modal') ?>
   <?= \App\Core\View::partial('partials/quote_modal', ['site' => $site]) ?>
+  <?= \App\Core\View::partial('partials/cookie_banner') ?>
 
   <a class="back-top" href="#top" aria-label="Volver al inicio"><?= icon('arrow-up') ?></a>
   <script src="/assets/js/main.js" defer></script>

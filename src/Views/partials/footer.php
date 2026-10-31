@@ -36,6 +36,8 @@ $niches = $allNiches ?? (new NicheRepository())->getAll();
           <li><a href="/#work">Sectores especializados</a></li>
           <li><a href="/#pricing">Paquetes de contenido</a></li>
           <li><a href="/#contact">Contacto directo</a></li>
+          <li><a href="/aviso-de-privacidad">Aviso de Privacidad</a></li>
+          <li><a href="/terminos-y-condiciones">Términos y Condiciones</a></li>
         </ul>
       </div>
 
@@ -100,9 +102,44 @@ $niches = $allNiches ?? (new NicheRepository())->getAll();
       <p class="footer-copy">
         © <?= date('Y') ?> <?= e($site->name) ?> · Todos los derechos reservados.
       </p>
+      <div class="footer-legal-links">
+        <a href="/aviso-de-privacidad">Aviso de Privacidad</a>
+        <span class="sep">·</span>
+        <a href="/terminos-y-condiciones">Términos y Condiciones</a>
+      </div>
       <p class="footer-credits">
         Fotografía comercial & Producción audiovisual · Hermosillo, Son.
       </p>
     </div>
   </div>
 </footer>
+
+<style>
+.footer-legal-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  color: #9cb5d1;
+}
+.footer-legal-links a {
+  color: #b0c9e4;
+  text-decoration: none;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+.footer-legal-links a:hover {
+  color: #FFFFFF !important;
+  text-decoration: underline !important;
+}
+.footer-legal-links .sep {
+  opacity: 0.5;
+}
+@media (max-width: 768px) {
+  .footer-bottom-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+}
+</style>

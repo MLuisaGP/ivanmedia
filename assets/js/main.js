@@ -359,15 +359,125 @@
   };
 
   const markFieldInvalid = (element, isInvalid) => {
+    if (!element) return;
     const group = element.closest('.form-group');
     if (group) {
       group.classList.toggle('is-invalid', isInvalid);
     }
   };
 
-  quoteForm?.querySelectorAll('input, textarea, select').forEach(input => {
-    input.addEventListener('input', () => markFieldInvalid(input, false));
-    input.addEventListener('change', () => markFieldInvalid(input, false));
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  // Validación individual inmediata por campo
+  const validateField = (input, force = false) => {
+    if (!input) return true;
+    const id = input.id;
+    const val = input.value.trim();
+
+    // Si aún no interactúa y no estamos forzando la validación del paso, no mostrar error
+    if (!force && !input.dataset.touched) return true;
+
+    let isFieldValid = true;
+
+    if (id === 'q_nombre') {
+      isFieldValid = val.length >= 2;
+    } else if (id === 'q_marca') {
+      isFieldValid = val.length >= 2;
+    } else if (id === 'q_email') {
+      isFieldValid = val.length > 0 && emailRegex.test(val);
+    } else if (id === 'q_telefono') {
+      const cleanDigits = val.replace(/\D/g, '');
+      isFieldValid = cleanDigits.length >= 10;
+    } else if (id === 'q_giro') {
+      isFieldValid = val.length >= 2;
+    } else if (id === 'q_cliente_ideal') {
+      isFieldValid = val.length >= 2;
+    } else if (id === 'q_competidores') {
+      isFieldValid = val.length >= 1;
+    }
+
+    markFieldInvalid(input, !isFieldValid);
+    return isFieldValid;
+  };
+
+  const validateGroup = (groupName) => {
+    if (groupName === 'tiempo_mercado') {
+      const selected = quoteForm.querySelector('input[name="tiempo_mercado"]:checked');
+      const group = quoteForm.querySelector('#groupTiempoMercado')?.closest('.form-group');
+      if (group) group.classList.toggle('is-invalid', !selected);
+      return !!selected;
+    }
+    if (groupName === 'canales_digitales') {
+      const selected = quoteForm.querySelector('input[name="canales_digitales"]:checked');
+      const group = quoteForm.querySelector('#groupCanalesDigitales')?.closest('.form-group');
+      if (group) group.classList.toggle('is-invalid', !selected);
+      return !!selected;
+    }
+    if (groupName === 'resultado_ideal') {
+      const selected = quoteForm.querySelectorAll('input[name="resultado_ideal[]"]:checked');
+      const group = quoteForm.querySelector('#groupResultadoIdeal')?.closest('.form-group');
+      const valid = selected.length > 0;
+      if (group) group.classList.toggle('is-invalid', !valid);
+      return valid;
+    }
+    if (groupName === 'presupuesto') {
+      const selected = quoteForm.querySelector('input[name="presupuesto"]:checked');
+      const group = quoteForm.querySelector('#groupPresupuesto')?.closest('.form-group');
+      if (group) group.classList.toggle('is-invalid', !selected);
+      return !!selected;
+    }
+    if (groupName === 'consentimiento') {
+      const consentCheckbox = quoteForm.querySelector('#q_consent');
+      const consentError = quoteForm.querySelector('#consentErrorMsg');
+      const consentGroup = quoteForm.querySelector('#groupConsent');
+      const valid = !!consentCheckbox?.checked;
+      if (consentError) consentError.style.display = valid ? 'none' : 'block';
+      if (consentGroup) consentGroup.classList.toggle('is-invalid', !valid);
+      return valid;
+    }
+    return true;
+  };
+
+  // Validación inmediata al salir del input (blur) y mientras escribe (input)
+  quoteForm?.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea').forEach(input => {
+    input.addEventListener('blur', () => {
+      input.dataset.touched = 'true';
+      validateField(input, true);
+    });
+
+    input.addEventListener('input', () => {
+      if (input.dataset.touched) {
+        validateField(input, true);
+      } else {
+        markFieldInvalid(input, false);
+      }
+    });
+  });
+
+  // Radios y Checkboxes: al hacer clic, valida y retira el error de inmediato
+  quoteForm?.querySelectorAll('input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      validateGroup(radio.name);
+    });
+  });
+
+  quoteForm?.querySelectorAll('input[name="resultado_ideal[]"]').forEach(chk => {
+    chk.addEventListener('change', () => {
+      validateGroup('resultado_ideal');
+    });
+  });
+
+  quoteForm?.querySelector('#q_consent')?.addEventListener('change', () => {
+    validateGroup('consentimiento');
+  });
+
+  checkObjetivoOtro?.addEventListener('change', () => {
+    if (quoteOtherField) {
+      quoteOtherField.style.display = checkObjetivoOtro.checked ? 'block' : 'none';
+      if (checkObjetivoOtro.checked) {
+        quoteOtherField.querySelector('input')?.focus();
+      }
+    }
   });
 
   const validateQuoteStep = (step) => {
@@ -380,88 +490,58 @@
       const email = quoteForm.querySelector('#q_email');
       const telefono = quoteForm.querySelector('#q_telefono');
 
-      if (!nombre?.value.trim()) {
-        markFieldInvalid(nombre, true);
-        isValid = false;
-        if (!firstInvalid) firstInvalid = nombre;
-      }
-      if (!marca?.value.trim()) {
-        markFieldInvalid(marca, true);
-        isValid = false;
-        if (!firstInvalid) firstInvalid = marca;
-      }
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!email?.value.trim() || !emailRegex.test(email.value.trim())) {
-        markFieldInvalid(email, true);
-        isValid = false;
-        if (!firstInvalid) firstInvalid = email;
-      }
-      if (!telefono?.value.trim() || telefono.value.trim().length < 7) {
-        markFieldInvalid(telefono, true);
-        isValid = false;
-        if (!firstInvalid) firstInvalid = telefono;
-      }
+      [nombre, marca, email, telefono].forEach(input => {
+        if (input) {
+          input.dataset.touched = 'true';
+          if (!validateField(input, true)) {
+            isValid = false;
+            if (!firstInvalid) firstInvalid = input;
+          }
+        }
+      });
     } else if (step === 2) {
       const giro = quoteForm.querySelector('#q_giro');
-      const tiempoSelected = quoteForm.querySelector('input[name="tiempo_mercado"]:checked');
-      const canalesSelected = quoteForm.querySelector('input[name="canales_digitales"]:checked');
-
-      if (!giro?.value.trim()) {
-        markFieldInvalid(giro, true);
-        isValid = false;
-        if (!firstInvalid) firstInvalid = giro;
+      if (giro) {
+        giro.dataset.touched = 'true';
+        if (!validateField(giro, true)) {
+          isValid = false;
+          if (!firstInvalid) firstInvalid = giro;
+        }
       }
-      if (!tiempoSelected) {
-        const group = quoteForm.querySelector('#groupTiempoMercado')?.closest('.form-group');
-        group?.classList.add('is-invalid');
+      if (!validateGroup('tiempo_mercado')) {
         isValid = false;
-        if (!firstInvalid) firstInvalid = group;
+        if (!firstInvalid) firstInvalid = quoteForm.querySelector('#groupTiempoMercado');
       }
-      if (!canalesSelected) {
-        const group = quoteForm.querySelector('#groupCanalesDigitales')?.closest('.form-group');
-        group?.classList.add('is-invalid');
+      if (!validateGroup('canales_digitales')) {
         isValid = false;
-        if (!firstInvalid) firstInvalid = group;
+        if (!firstInvalid) firstInvalid = quoteForm.querySelector('#groupCanalesDigitales');
       }
     } else if (step === 3) {
-      const resultadoChecked = quoteForm.querySelectorAll('input[name="resultado_ideal[]"]:checked');
-      if (resultadoChecked.length === 0) {
-        const group = quoteForm.querySelector('#groupResultadoIdeal')?.closest('.form-group');
-        group?.classList.add('is-invalid');
+      if (!validateGroup('resultado_ideal')) {
         isValid = false;
-        if (!firstInvalid) firstInvalid = group;
+        if (!firstInvalid) firstInvalid = quoteForm.querySelector('#groupResultadoIdeal');
       }
     } else if (step === 4) {
       const clienteIdeal = quoteForm.querySelector('#q_cliente_ideal');
       const competidores = quoteForm.querySelector('#q_competidores');
 
-      if (!clienteIdeal?.value.trim()) {
-        markFieldInvalid(clienteIdeal, true);
-        isValid = false;
-        if (!firstInvalid) firstInvalid = clienteIdeal;
-      }
-      if (!competidores?.value.trim()) {
-        markFieldInvalid(competidores, true);
-        isValid = false;
-        if (!firstInvalid) firstInvalid = competidores;
-      }
+      [clienteIdeal, competidores].forEach(input => {
+        if (input) {
+          input.dataset.touched = 'true';
+          if (!validateField(input, true)) {
+            isValid = false;
+            if (!firstInvalid) firstInvalid = input;
+          }
+        }
+      });
     } else if (step === 5) {
-      const presupuestoSelected = quoteForm.querySelector('input[name="presupuesto"]:checked');
-      if (!presupuestoSelected) {
-        const group = quoteForm.querySelector('#groupPresupuesto')?.closest('.form-group');
-        group?.classList.add('is-invalid');
+      if (!validateGroup('presupuesto')) {
         isValid = false;
-        if (!firstInvalid) firstInvalid = group;
+        if (!firstInvalid) firstInvalid = quoteForm.querySelector('#groupPresupuesto');
       }
-
-      const consentCheckbox = quoteForm.querySelector('#q_consent');
-      const consentError = quoteForm.querySelector('#consentErrorMsg');
-      if (consentCheckbox && !consentCheckbox.checked) {
-        if (consentError) consentError.style.display = 'block';
+      if (!validateGroup('consentimiento')) {
         isValid = false;
-        if (!firstInvalid) firstInvalid = consentCheckbox;
-      } else if (consentError) {
-        consentError.style.display = 'none';
+        if (!firstInvalid) firstInvalid = quoteForm.querySelector('#q_consent');
       }
     }
 
@@ -495,27 +575,18 @@
       if (targetStep < currentQuoteStep) {
         goToQuoteStep(targetStep);
       } else if (targetStep > currentQuoteStep) {
-        if (validateQuoteStep(currentQuoteStep)) {
+        let allValid = true;
+        for (let s = currentQuoteStep; s < targetStep; s++) {
+          if (!validateQuoteStep(s)) {
+            allValid = false;
+            break;
+          }
+        }
+        if (allValid) {
           goToQuoteStep(targetStep);
         }
       }
     });
-  });
-
-  quoteForm?.querySelector('#q_consent')?.addEventListener('change', (e) => {
-    const consentError = quoteForm.querySelector('#consentErrorMsg');
-    if (consentError) {
-      consentError.style.display = e.target.checked ? 'none' : 'block';
-    }
-  });
-
-  checkObjetivoOtro?.addEventListener('change', () => {
-    if (quoteOtherField) {
-      quoteOtherField.style.display = checkObjetivoOtro.checked ? 'block' : 'none';
-      if (checkObjetivoOtro.checked) {
-        quoteOtherField.querySelector('input')?.focus();
-      }
-    }
   });
 
   const escapeHtml = (str) => {

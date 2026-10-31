@@ -87,7 +87,7 @@ $whatsappUrl = isset($site) && !empty($site->whatsapp) ? $site->whatsapp : (func
           <div class="form-group">
             <label for="q_telefono">Número de teléfono o WhatsApp <span class="req">*</span></label>
             <input type="tel" id="q_telefono" name="telefono" placeholder="Ej. 662 123 4567" required autocomplete="tel">
-            <span class="field-error-msg">Por favor ingresa un número de contacto</span>
+            <span class="field-error-msg">Por favor ingresa un número de contacto válido (10 dígitos)</span>
           </div>
         </div>
 
