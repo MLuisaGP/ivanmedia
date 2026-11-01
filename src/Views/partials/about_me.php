@@ -18,8 +18,12 @@ declare(strict_types=1);
       </div>
       <div class="about-me-stats">
         <div>
-          <strong class="stat-counter" data-target="30" data-prefix="+">+30</strong>
+          <strong class="stat-counter" data-target="100" data-prefix="+">+100</strong>
           <span>Videos producidos</span>
+        </div>
+        <div>
+          <strong class="stat-counter" data-target="30" data-prefix="+">+30</strong>
+          <span>Videos virales</span>
         </div>
         <div>
           <strong class="stat-counter" data-target="50" data-prefix="+">+50</strong>

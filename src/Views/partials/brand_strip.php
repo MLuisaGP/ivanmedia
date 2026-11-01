@@ -24,10 +24,10 @@ $brands = [
         'height' => 46,
     ],
     [
-        'name' => 'Runfit Studio',
-        'sector' => 'Fitness & Rendimiento',
-        'file' => 'runfit-dark.png',
-        'height' => 32,
+        'name' => 'Dorian',
+        'sector' => 'Bar & Nightclub',
+        'file' => 'IMG_9243.png',
+        'height' => 44,
     ],
     [
         'name' => 'Super Team',
